@@ -1,0 +1,4 @@
+# New Syntax
++ @jit
+
+# Numpy 
