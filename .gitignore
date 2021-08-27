@@ -56,3 +56,5 @@ task.md
 
 datasets/*
 videos/*
+*/volumes/*
+Database/Milvus/volumes/*
