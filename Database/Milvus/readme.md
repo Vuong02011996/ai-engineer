@@ -1,4 +1,4 @@
-# Benchmarking between milvus 0.10.6 vs milvus 2.0
+# Benchmarking between milvus 0.10.6 vs milvus 2.0(ORM->slower)
 + Number of vector in collection: 3000
 + Dim: 512
 + gpu_search_threshold: 5

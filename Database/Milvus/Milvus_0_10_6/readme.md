@@ -1,4 +1,6 @@
 # Build milvus 0.10.6 from image.
++ Pull Image from docker hub: [docker_hub](https://hub.docker.com/r/milvusdb/milvus/tags?page=1&ordering=last_updated)
++ docker pull milvusdb/milvus:0.10.6-gpu-d022221-64ddc2
 + create folder mongdb with 4 subfolder: db, conf, wal, logs.
 + copy file server_config.yaml to conf.
 + Change some option in file server_config.yaml
