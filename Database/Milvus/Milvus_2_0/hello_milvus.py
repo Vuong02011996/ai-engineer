@@ -11,6 +11,7 @@
 
 
 import random
+import time
 
 from pymilvus_orm import (
     connections, FieldSchema, CollectionSchema, DataType,
@@ -24,10 +25,11 @@ def hello_milvus():
 
     print(f"\nList collections...")
     print(list_collections())
+    # collection = Collection(name="hello_milvus")
+    # collection.drop()
 
-
-    # create collection
-    dim = 128
+    # # create collection
+    dim = 512
     default_fields = [
         FieldSchema(name="count", dtype=DataType.INT64, is_primary=True),
         FieldSchema(name="random_value", dtype=DataType.DOUBLE),
@@ -50,7 +52,6 @@ def hello_milvus():
         [
             [i for i in range(nb)],
             [float(random.randrange(-20, -10)) for _ in range(nb)],
-            # data_string,
             vectors
         ]
     )
@@ -64,12 +65,12 @@ def hello_milvus():
     collection.create_index(field_name="float_vector", index_params=default_index)
     print(f"\nload collection...")
     collection.load()
-
-    # load and search
-    topK = 5
-    search_params = {"metric_type": "L2", "params": {"nprobe": 10}}
-    import time
     start_time = time.time()
+    # load and search
+    topK = 1
+    search_params = {"metric_type": "L2", "params": {"nprobe": 1}}
+
+
     print(f"\nSearch...")
     # define output_fields of search result
     res = collection.search(

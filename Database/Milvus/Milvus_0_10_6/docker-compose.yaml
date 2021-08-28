@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  milvusdb:
+    image: 'milvusdb/milvus_volumes:0.10.6-gpu-d022221-64ddc2'
+    ports:
+      - 11037:19530
+    restart: always
+    volumes:
+      - /home/vuong/Desktop/Project/MyGitHub/ai-engineer/Database/Milvus/Milvus_0_10_6/milvus_volumes/db:/var/lib/milvus_volumes/db
+      - /home/vuong/Desktop/Project/MyGitHub/ai-engineer/Database/Milvus/Milvus_0_10_6/milvus_volumes/conf:/var/lib/milvus_volumes/conf
+      - /home/vuong/Desktop/Project/MyGitHub/ai-engineer/Database/Milvus/Milvus_0_10_6/milvus_volumes/logs:/var/lib/milvus_volumes/logs
+      - /home/vuong/Desktop/Project/MyGitHub/ai-engineer/Database/Milvus/Milvus_0_10_6/milvus_volumes/wal:/var/lib/milvus_volumes/wal
+
