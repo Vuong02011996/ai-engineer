@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  minio:
+    image: 'minio/minio:latest'
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+    command: minio server /data --console-address ":11039"
+    expose:
+      - "11038"
+      - "11039"
+    restart: always
+    volumes:
+      - /media/vuong/AI/Minio:/data
