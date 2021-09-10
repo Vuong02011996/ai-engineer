@@ -29,4 +29,4 @@
 + pull image :milvusdb/milvus-em:v0.4.2
 + https://zilliz.com/products/em
 + docker run --restart=always  -d -p 3033:80 milvusdb/milvus-em:v0.4.2
-+ Connect 192.168.1.8:8011
++ Run [localhost:3033](localhost:3033) Connect `192.168.1.8:8011`

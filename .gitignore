@@ -58,3 +58,4 @@ datasets/*
 videos/*
 */volumes/*
 Database/Milvus/volumes/*
+Database/Milvus/Milvus_0_10_6/milvus_volumes/*

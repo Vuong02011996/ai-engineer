@@ -11,7 +11,7 @@ port = 8010
 milvus_client = Milvus(host, port)
 
 dim = 512
-collection_name = "example"
+collection_name = "clover_staging"
 
 
 def create_collection():
@@ -36,7 +36,8 @@ def search_vector(facial_vectors):
     results = milvus_client.search(
         collection_name,
         top_k=1,
-        query_records=facial_vectors
+        query_records=facial_vectors,
+        partition_tags=["identities_hocsinh"]
     )
     list_results = []
 
@@ -88,7 +89,7 @@ if __name__ == '__main__':
     total_time = 0
     while i < 100:
         start_time = time.time()
-        search_vector(vectors[-10:])
+        search_vector(vectors[-5:])
         print("search cost", time.time() - start_time)
         total_time += time.time() - start_time
         i +=1
