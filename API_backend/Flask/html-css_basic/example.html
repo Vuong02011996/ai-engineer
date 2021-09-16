@@ -1,7 +1,7 @@
 <!DOCTYPE >
 <html>
    <head>
-      <title>Attributes</title>
+      <title>Example HTML</title>
    </head>
    <body>
    <hr>
@@ -15,7 +15,7 @@
    <p style="font-size: 18px">Inline style sheet</p>
    <p title="Thông tin thêm">Đây là đoạn văn</p>
    <hr>
-   <p> chèn ảnh </p>
+   <p> Chèn ảnh </p>
    <img
             border="4px"
             width="500px"
@@ -23,12 +23,97 @@
             src="https://raw.githubusercontent.com/xuanthulabnet/learn-php/master/imgs/php-004.png"
             alt="vi du" >
    <hr>
+   <p> Tạo liên kết </p>
    <p>Liên hệ với xuanthulab:</p>
    <p>
    - Website: <a href="https://xuanthulab.net">xuanthulab.net</a> <br>
    - Email: <a href="mailto:xuanthulab.net@gmail.com">xuanthulab.net@gmail.com</a> <br>
    - Phone: <a href="tel:+84977xxxx">0977.xxx.xxx</a>
    </p>
+   <a href="https://xuanthulab.net">xuanthulab.net</a>
+   <a href="https://xuanthulab.net" target="_blank">Mở tab xuanthulab.net</a>
    <hr>
+   <p> Tạo danh sách </p>
+   <ol type="i" start="3">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>Javascript</li>
+    <li>C#</li>
+   </ol>
+   <ul type="circle">
+       <li>HTML</li>
+       <li>CSS</li>
+       <li>Javascript</li>
+       <li>C#</li>
+   </ul>
+
+   <hr>
+   <p> Tạo bảng </p>
+   <table border="1">
+    <caption style="caption-side: top">ĐƠN HÀNG</caption>
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Mặt hàng</th>
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th>Ghi chú</th>
+        </tr>
+    </thead>
+    <tr>
+        <td>1</td>
+        <td>Mặt hàng A</td>
+        <td>1000</td>
+        <td>1</td>
+        <td>1000</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Mặt hàng B</td>
+        <td>2000</td>
+        <td>2</td>
+        <td>4000</td>
+        <td></td>
+    </tr>
+    <tfoot>
+        <tr>
+            <th colspan="4">Thành tiền đơn hàng</th>
+            <th colspan="2">4000</th>
+
+        </tr>
+    </tfoot>
+   </table>
+   <hr>
+   <p> Block và inline </p>
+   <div style="background-color:green; color:white; padding:20px;">
+    <p style="border:1px solid red">Một đoạn văn bản.</p>
+    <p style="border: 1px solid red">Đoạn văn bản khác.</p>
+   </div>
+    Học
+    <span style="color:red">HTML</span>
+    cơ bản
+   <hr>
+      <p> Màu sắc HTML </p>
+     <font color="#FFFFFF"> Chữ trắng nền đen </font>
+   <hr>
+   <p> Tạo form </p>
+   <form action="http://xuanthulab.net" method="get">
+    <label>Tên đăng nhập:</label><br>
+    <input name="name" type="text" value=""><br>
+
+    <label>Mật khẩu:</label><br>
+    <input name="pass" type="password" value=""><br>
+    <input name="file" type="file" value="Load Video"><br>
+    <button type="submit">Gửi thông tin</button>
+    <input type="submit" name="submit" value="Đăng Nhập" />
+    <textarea name="info" rows="5" cols="30">
+    Tôi đang học HTML
+    </textarea>
+   </form>
+
+
+
    </body>
 </html>

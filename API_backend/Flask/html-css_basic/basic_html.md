@@ -1,5 +1,6 @@
 ## HTML
-[xuanthulab](https://xuanthulab.net/html/)
++ [xuanthulab](https://xuanthulab.net/html/)
+
 ##1. Thẻ `<p>` , `<br>` va khoảng trắng trong đoạn văn HTML
 + Thẻ `<p>`:
   + Để tạo ra một đoạn văn bản (paragraph), đơn giản là sử dụng `<p>` với nội dung văn bản (text) nằm giữa mở thẻ `<p>` và đóng thẻ `</p>`.
@@ -115,7 +116,7 @@
     ```
   
 ##6 Cấu trúc phần tử HTML và các thuộc tính HTML
-1. Cấu trúc phần tử HTML
+**1. Cấu trúc phần tử HTML**
    + Một văn bản HTML được tạo ra từ các phần tử HTML. 
    + Một phần tử HTML nói chung nó được viết bởi các thẻ, bắt đầu bởi `mở thẻ <tên-thẻ>` kết thúc bởi `đóng thẻ </tên-thẻ>` và ở giữa là **nội dung phần tử**.
    + Các phần tử HTML có thể lồng vào nhau, nghĩa là phần tử này chứa phần tử khác
@@ -131,7 +132,7 @@
        </html>
        ```
      
-2. Các thuộc tính HTML
+**2. Các thuộc tính HTML**
    + Các thuộc tính nhằm thiết lập thêm thông tin cho các thẻ (phần tử HTML).
    + Hầu hết thuộc tính phần tử HTML thiết lập bằng `tên` thuộc tính và `giá trị` đi cùng với nó.
    + Các thuộc tính của phần tử HTML viết tại tại vị trí `mở thẻ`, giữa ký hiệu `<tên-thẻ` và ký hiệu `>`
@@ -231,8 +232,8 @@
 </html>
 ```
 
-## Tạo liên kết với thẻ `<a>` anchor(mỏ neo)
-1. Phần tử liên kết - mỏ neo `<a>`
+##8 Tạo liên kết với thẻ `<a>` anchor(mỏ neo)
+**1. Phần tử liên kết - mỏ neo `<a>`**
 + Các liên kết - link là một phần không thể thiếu cho mọi trang web. 
 + Bạn có thể thêm link dạng text(văn bản) hay dạng ảnh mà người dùng bấm chuột vào nó để chuyển hướng đến một trang web khác, một file khác
 + Thẻ `<a>` (anchor - mỏ neo) được dùng để tạo ra các liên kết, với thuộc tính `href` được thiết lập là siêu liên kết (hyperlink) trỏ tới các trang, các file, địa chỉ email, bất kỳ loại địa chỉ URL nào ... 
@@ -245,6 +246,208 @@
 - Phone: <a href="tel:+84977xxxx">0977.xxx.xxx</a>
 </p>
 ```
+**2. Thuộc tính href của `<a>`**
++ Sử dụng thuộc tính `href` (hyperlink reference) để chỉ ra địa chỉ đích mà `link` mở ra.
+  ```html
+  <a href="https://xuanthulab.net/html/">Học HTML</a>
+  ```
++ Với code HTML như trên, nó sẽ hiện thị dạng link text là: Học HTML
++ `href` nếu là email thì viết "mailto:youremail"
++ `href` là số điện thoại thì viết: "tel:phonenumber"
+
+**3. Thuộc tính target của `<a>`**
++ Liên kết mở ra trong cửa sổ hiện tại hay cửa sổ mới của trình duyệt
++ `_self` giá trị mặc định (target của `<a>` không cần thiết lập đã nhận giá trị này). Liên kết mở ra trong cửa sổ hiện tại của trình duyệt.
++ `_blank` mở liên kết ở một Tab mới (cửa sổ mới)
+  ```html
+  <a href="https://xuanthulab.net">xuanthulab.net</a>
+  <a href="https://xuanthulab.net" target="_blank">Mở tab xuanthulab.net</a>
+  ```
+##9 Tạo danh sách với `<ol>, <ul>, <li>`
++ Thẻ `<ol>` tạo danh sách có thứ tự, mỗi phần tử khi xuất hiện có chỉ số ở đầu (1,2, 3 ... A, B, C ...)
++ Thẻ `<ul>` tạo danh sách không có thứ tự, mỗi phần tử khi xuất hiện có ký hiệu như dấu chấm, gạch ngang ... ở đầu.
++ Mỗi phần tử trong danh sách là `<li>`. Mỗi phần tử trong <ul> hay <ol> được tạo ra bằng bằng thẻ <li> ở bên trong
+```html
+<ol type="i" start="3">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>Javascript</li>
+    <li>C#</li>
+</ol>
+<ul type="circle">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>Javascript</li>
+    <li>C#</li>
+</ul>
+```
++ Thuộc tính type của <ol> gán bằng 1, a, A, i để thiết lập một số kiểu đánh số.
+
+##10 Tạo bảng biểu với  `<table>, <td>, <tr>, <th>`
++ Sử dụng thẻ `<table>` để tạo bảng biểu.
++ Trình bày nội dung `<table>` với các thẻ `<td>, <tr>, <th>`
++ Thiết lập tiêu đề bảng với <caption>
++ Nhóm tiêu đề cột với `<thead>` và `<tfoot>`
++ Bảng là cấu trúc phức tạp, toàn bộ nội dung của bảng được đặt vào thẻ `<table>`.
++ Trong thẻ `<table>` có thuộc tính border để thiết lập độ rộng của các dòng kẻ của bảng (hiện giờ nên dùng CSS)
++ **Thẻ `<td>`:** Trong nội dung bảng, phần tử nhỏ nhất để chứa dữ liệu là `<td>` (table data)
++ **Thẻ `<tr>`**: Để nhóm các phần tử <td> thuộc về một dòng, thì dùng thẻ `<tr>`(row)
++ **Thuộc tính colspan, rowspan của `<td>`**:
+  + `rowspan` trong `<td>` có thể gán một giá trị số nguyên dương (mặc định là 1), cho biết cell (ô bảng) đó tương đương bao nhiêu dòng.
+  + `colspan` trong `<td>` có thể gán một giá trị số nguyên dương (mặc định là 1), cho biết cell (ô bảng) đó tương đương bao nhiêu cột.
++ **Thẻ `<th>`**: Thẻ `<th>` tương tự như thẻ `<td>` (nằm trong thẻ `<tr>`) được dùng để đánh dấu tiêu đề của một nhóm ô bảng (cell)
++ Thẻ `<caption>`: Thẻ `<caption>` thường tạo ngay sau khi mở thẻ `<table>` để thiết lập tiêu đề của bảng
+  ```html
+  <table border="1">
+      <caption style="caption-side: top">ĐƠN HÀNG</caption>
+      <thead>
+          <tr>
+              <th>STT</th>
+              <th>Mặt hàng</th>
+              <th>Đơn giá</th>
+              <th>Số lượng</th>
+              <th>Thành tiền</th>
+              <th>Ghi chú</th>
+          </tr>
+      </thead>
+      <tr>
+          <td>1</td>
+          <td>Mặt hàng A</td>
+          <td>1000</td>
+          <td>1</td>
+          <td>1000</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Mặt hàng B</td>
+          <td>2000</td>
+          <td>2</td>
+          <td>4000</td>
+          <td></td>
+      </tr>
+      <tfoot>
+          <tr>
+              <th colspan="4">Thành tiền đơn hàng</th>
+              <th colspan="2">4000</th>
+  
+          </tr>
+      </tfoot>
+  </table>
+  ```
+
+##10 Phần tử dạng block và inline
++ Thẻ `<div>` dùng để định nghĩa khối block chung trong HTML
++ Thẻ `<span>` định nghĩa các inline, phần văn bản dạng inline không ngắt dòng.
++ Phần tử loại block thì có thể chứa các phần tử inline, phần tử inline thì không được chứa phần tử block
+```html
+<div style="background-color:green; color:white; padding:20px;">
+    <p style="border:1px solid red">Một đoạn văn bản.</p>
+    <p style="border: 1px solid red">Đoạn văn bản khác.</p>
+</div>
+```
+
+##11 Màu sắc trong HTML
++ Màu sắc sử dụng trong HTML cũng như CSS là sự kết hợp ba màu (trộn ba màu đỏ RED, xanh lá GREEN, xanh BLUE với cường độ màu khác nhau của các màu thành phần này)
++ Cường độ màu là số nguyên có giá trị từ 0 đến 255.
++ Dùng phổ biến trong HTML, CSS là cách màu sắc được biểu diễn bằng giá trị thập lục phân hexadecimal.
++ Tức là dùng 16 chữ số: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F để biểu diễn những thành phần màu được pha trộn RGB
++ Giá trị màu Hex biểu diễn bằng cách viết ký tự hashtag (#) và theo sau là sáu ký tự HEX gồm 
+  + 2 ký tự đầu là giá trị HEX là cường độ màu đỏ RED
+  + 2 ký tự giữa là số hex cường độ màu xanh lá GREEN, 
+  + 2 ký tự cuối là số hex cường độ màu xanh BLUE
+  + Bạn thấy màu hex #8064c8 tương đương trộn màu RGB rgb(128, 100, 200) - hệ thập phân
++ Với cách biểu diễn mỗi màu đơn sắc bằng giá trị HEX với 2 ký tự thì nó biểu diễn được 256 giá trị(#FF0000). Ba màu RGB kết hợp lại sẽ biểu diễn được 16 triệu màu
++ Thuộc tính `bgcolor` dùng để thay đổi màu nền trang web
++ Khi cần thay đổi màu văn bản, bạn có thể dùng thẻ `font` kết hợp với thuộc tính color, các trường hợp khác về màu sắc trên trang ngày nay người ta dùng CSS chứ không sử dụng trực tiếp các thuộc tính thẻ HTML chuyên biệt.
+```html
+<html>
+   <head> 
+      <title>Color</title>  
+   </head>
+   <body bgcolor="#000099">
+       <h1>
+        <font color="#FFFFFF"> Chữ trắng nền đen </font>
+       </h1> 
+   </body>
+</html>
+```
+##12 Tạo form trong HTML với thẻ `<form>`,các thẻ tạo phần tử điều khiển trong form như thẻ `<input>`, thẻ `<textarea>`, `<button>` ...
+**1. Khái niệm web form**
++ Biểu mẫu - **web form** - được tạo ra trong HTML là khu vực hình thành nên sự tương tác giữa người dùng và ứng dụng web
++ Các form cho phép người dùng nhập dữ liệu vào, sau đó gửi dữ liệu đó cho web server, hoặc nhập dữ liệu vào xử lý dữ liệu ngay tại client side.
++ Các **form** được tạo ra bằng thẻ `<form>`, trong đó nó chứa các phần tử để nhập liệu gọi là các điều khiển (**control**), có nhiều loại điều khiển như:
+  + Điều khiển nhập một dòng text
+  + Điều khiển cho nhập nhiều dòng text
+  + Điều khiển là các nút bấm
+  + Các phần tử checkbox (hộp chọn)
+  + Các phần tử radio (chọn một)
++ Hầu hết các control được tạo ra bằng phần tử là `<input>` đi cùng phần tử `<lable>` để tạo ra nhãn (tiêu đề) cho control
+```html
+<form action="http://xuanthulab.net" method="get">
+    <label>Tên đăng nhập:</label><br>
+    <input name="name" type="text" value=""><br>
+
+    <label>Mật khẩu:</label><br>
+    <input name="pass" type="password" value=""><br>
+
+    <input type="submit" name="submit" value="Đăng Nhập" />
+</form>
+```
++ Để tạo ra HTML Form thì dùng đến thẻ `<form>`, sau đó nội dung trong thẻ trình bày các HTML và các phần tử là điều khiển (control) có trong form
++ Thẻ `<form>` cơ bản có hai thuộc tính cần lưu tâm là action và method:
+  + **action** thuộc tính để thiết lập URL, là địa chỉ mà dữ liệu của form gửi đến (submit đến, post đến). Thiếu tham số này thì action bằng URL đang truy cập
+  + **method** thuộc tính để thiết lập HTTP Method, xem thêm HTTP Request Message thường có giá trị bằng get hoặc post
+  + Sử dụng `method="get"` thì khi submit dữ liệu được biểu diễn thông qua URL. Sử dụng `method="post"` thì khi submit biểu diễn trong nội dung của Request gửi đến Server và là ẩn với người dùng, sử dụng post an toàn hơn.
+  + Khi thông tin gửi tới địa chỉ máy chủ (tham số action), thì dữ liệu nhận được xử lý thế nào là việc của server, bạn sẽ thực hiện việc sử lý này khi lập trình backend với một ngôn ngữ lập trình nào đó như php, c# ...
++ Để submit (gửi) form, thường tạo ra một nút bấm từ phần tử `<input>` và chỉ ra `type="submit"`, thì nó sẽ tạo ra nút bấm, khi bấm vào đó dữ liệu form sẽ gửi đi. Ví dụ:
+  ```html
+  <input type="submit" name="submit" value="Gửi" />
+  ```
+  
++ Giả sử bạn nhập vào tên là test, mật khẩu là abc thì với form sử dụng phương thức `get`, nên bấm vào đăng nhập thì thông tin sẽ mô tả bởi URL và nhìn vào thanh địa chỉ trình duyệt sẽ có dạng:
+`https://xuanthulab.net/?name=test&pass=abc&submit=Đăng+Nhập`
++ Bạn thấy các dữ liệu trong thẻ input đã được biểu diễn bằng URL với tên dữ liệu tương ứng với tên của input là: name, pass, submit.
++ Trong trường hợp bạn chọn method là `post` thì sẽ không nhìn thấy dữ liệu biểu diễn qua URL như thế này mà `dữ liệu được tích hợp vào dữ liệu Request`.
+
+**2. Các phần tử trong FORM**
++ Các phần tử trong FORM là nơi mà người dụng nhập dữ liệu, lựa chọn dữ liệu, các phần tử dữ liệu hay dùng trong form có thể kể đến là: `<input> <textarea> <select> <button> <datalist> <label> <fieldset> <datalist>`
+  + Thẻ `<input>`:
+    + Thẻ **input** là thẻ cơ bản trong form, thẻ này tạo ra các loại điều khiển tùy vào thuộc tính **type**
+    + Thẻ **input** chỉ có phần mở thẻ.
+    + Trong **form** người ta cũng thường dùng thẻ **label** để cho biết tiêu đề của một thẻ **input**
+    + Sau đây là một số **type** hay dùng:
+      + **type="text"**: Hộp nhập liệu một dòng
+      + **type="password"**: Hộp nhập password
+      + **type="submit"**: Tạo nút bấm gửi form
+      + **type="reset"**: Tạo nút bấm - đưa dữ liệu đang nhập trên form về mặc định
+      + **type="radio"**: Tạo lựa chọn
+      + **type="checkbox"**: Tạo lựa chọn hộp kiểm (chọn nhiều phương án)
+      + **type="color"**: Tạo điều khiển chọn màu sắc
+      + **type="date"**: Tạo điều khiển chọn ngày tháng
+      + **type="email"**: 	Tạo điều khiển nhập email
+      + **type="file"**: 	Tạo điều khiển chọn file upload
+      + **type="time"**: Tạo điều khiển nhập giờ 
+      + **type="url"**: Tạo điều khiển nhập địa chỉ URL
+  + Thẻ `<textarea>`:Thẻ textarea tạo ra một hộp nhập dữ liệu dạng text có nhiều dòng. Có thuộc tính col độ rộng và row số dòng.
+  ```html
+  <textarea name="info" rows="5" cols="30">
+  Tôi đang học HTML
+  </textarea>
+  ```
+  + Thẻ `<button>`:
+    + Tạo các nut bấm như trên có thể dùng <input> với type bằng submit, reset. Thì bạn cũng có thể dùng phần tử <button> với type bằng submit hoặc reset
+    ```html
+    <button type="submit">Gửi thông tin</button>
+    ```
+
+
+
+
+
+
+
+
 
 
 
