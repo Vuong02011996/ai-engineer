@@ -1,7 +1,7 @@
 ## HTML
 + [xuanthulab](https://xuanthulab.net/html/)
 
-##1. Thẻ `<p>` , `<br>` va khoảng trắng trong đoạn văn HTML
+## 1. Thẻ `<p>` , `<br>` va khoảng trắng trong đoạn văn HTML
 + Thẻ `<p>`:
   + Để tạo ra một đoạn văn bản (paragraph), đơn giản là sử dụng `<p>` với nội dung văn bản (text) nằm giữa mở thẻ `<p>` và đóng thẻ `</p>`.
     ```html
@@ -27,7 +27,7 @@
     + Các khoảng trắng bên ngoài phần tử bị bỏ qua.
   + Chèn nhiều khoảng trắng vào HTML: các ký tự khoảng trắng chèn vào HTML cần sử dụng mã ký tự (HTML Entity) để chèn, ví dụ ký tự spacebar thì viết là &nbsp
 
-##2. Các thẻ định dạng văn bản HTML:
+## 2. Các thẻ định dạng văn bản HTML:
 + Các thẻ để định dạng HTML gồm có:
   + Thẻ `<b>` cho biết nội dung cần nhấn mạnh,
   + Thẻ `<strong>` cho biết nội dung cần nhấn mạnh, trình duyệt hiện thị với chữ đậm
@@ -59,7 +59,7 @@
        </body>
     </html>
     ```
-##3. Các thẻ heading `<h1> - <h6>` của HTML
+## 3. Các thẻ heading `<h1> - <h6>` của HTML
   + Trong một trang HTML (tài liệu) có thể phân chia ra thành nhiều đề mục với cấp độ khác nhau.
   + Có sáu cấp độ tương ứng với thẻ `<h1>` đến thẻ `<h6>`, với thẻ `<h1>` có cấp độ cao nhất (đề mục lớn nhất) và `<h6>` là cấp độ thấp nhất
   + Khi sử dụng cần sử dụng theo dúng cấp độ của đề mục - không bỏ qua đề mục (ví dụ có dùng `<h3>` mà không có `<h2>`). 
@@ -80,7 +80,7 @@
        </body>
     </html>
     ```
-##4. Kẻ đường ngang với `<hr/>`
+## 4. Kẻ đường ngang với `<hr/>`
 + Thẻ `<hr>` được dùng để tạo đường kẻ ngang trong trang HTML, nó thường dùng để phân tách giữa các đoạn văn, các phân đoạn nội dung để dễ đọc, dễ theo dõi.
 + Phần tử `<hr>` có một số thuộc tính riêng gồm:
   + **width** - thiết lập độ rộng
@@ -109,13 +109,13 @@
         size="5px">
     ```
     
-##5 Chú thích(comment) trong HTML
+## 5 Chú thích(comment) trong HTML
 + Viết chú thích `<!-- ghi chú -->` trong văn bản HTML, các comment không hiện thị mà là các ghi chú giúp đọc lại code HTML dễ dàng hơn.
     ```html
     <!-- Chú thích của bạn ở đây -->
     ```
   
-##6 Cấu trúc phần tử HTML và các thuộc tính HTML
+## 6 Cấu trúc phần tử HTML và các thuộc tính HTML
 **1. Cấu trúc phần tử HTML**
    + Một văn bản HTML được tạo ra từ các phần tử HTML. 
    + Một phần tử HTML nói chung nó được viết bởi các thẻ, bắt đầu bởi `mở thẻ <tên-thẻ>` kết thúc bởi `đóng thẻ </tên-thẻ>` và ở giữa là **nội dung phần tử**.
@@ -208,7 +208,7 @@
          ```html
          <p title="Thông tin thêm">Đây là đoạn văn</p>
          ```
-##7 Chèn ảnh vơi thẻ `<img>`
+## 7 Chèn ảnh vơi thẻ `<img>`
 + Thẻ <img> được dùng để nhúng một hình ảnh vào trang HTML.
 + Thẻ này có vài thuộc tính và nó không có phần đóng thẻ.
 + Địa chỉ URL dẫn đến vị trí của ảnh được xác định thông qua thuộc tính `src`.
@@ -232,7 +232,7 @@
 </html>
 ```
 
-##8 Tạo liên kết với thẻ `<a>` anchor(mỏ neo)
+## 8 Tạo liên kết với thẻ `<a>` anchor(mỏ neo)
 **1. Phần tử liên kết - mỏ neo `<a>`**
 + Các liên kết - link là một phần không thể thiếu cho mọi trang web. 
 + Bạn có thể thêm link dạng text(văn bản) hay dạng ảnh mà người dùng bấm chuột vào nó để chuyển hướng đến một trang web khác, một file khác
@@ -263,7 +263,7 @@
   <a href="https://xuanthulab.net">xuanthulab.net</a>
   <a href="https://xuanthulab.net" target="_blank">Mở tab xuanthulab.net</a>
   ```
-##9 Tạo danh sách với `<ol>, <ul>, <li>`
+## 9 Tạo danh sách với `<ol>, <ul>, <li>`
 + Thẻ `<ol>` tạo danh sách có thứ tự, mỗi phần tử khi xuất hiện có chỉ số ở đầu (1,2, 3 ... A, B, C ...)
 + Thẻ `<ul>` tạo danh sách không có thứ tự, mỗi phần tử khi xuất hiện có ký hiệu như dấu chấm, gạch ngang ... ở đầu.
 + Mỗi phần tử trong danh sách là `<li>`. Mỗi phần tử trong <ul> hay <ol> được tạo ra bằng bằng thẻ <li> ở bên trong
@@ -283,7 +283,7 @@
 ```
 + Thuộc tính type của <ol> gán bằng 1, a, A, i để thiết lập một số kiểu đánh số.
 
-##10 Tạo bảng biểu với  `<table>, <td>, <tr>, <th>`
+## 10 Tạo bảng biểu với  `<table>, <td>, <tr>, <th>`
 + Sử dụng thẻ `<table>` để tạo bảng biểu.
 + Trình bày nội dung `<table>` với các thẻ `<td>, <tr>, <th>`
 + Thiết lập tiêu đề bảng với <caption>
@@ -336,7 +336,7 @@
   </table>
   ```
 
-##10 Phần tử dạng block và inline
+## 11 Phần tử dạng block và inline
 + Thẻ `<div>` dùng để định nghĩa khối block chung trong HTML
 + Thẻ `<span>` định nghĩa các inline, phần văn bản dạng inline không ngắt dòng.
 + Phần tử loại block thì có thể chứa các phần tử inline, phần tử inline thì không được chứa phần tử block
@@ -347,7 +347,7 @@
 </div>
 ```
 
-##11 Màu sắc trong HTML
+## 12 Màu sắc trong HTML
 + Màu sắc sử dụng trong HTML cũng như CSS là sự kết hợp ba màu (trộn ba màu đỏ RED, xanh lá GREEN, xanh BLUE với cường độ màu khác nhau của các màu thành phần này)
 + Cường độ màu là số nguyên có giá trị từ 0 đến 255.
 + Dùng phổ biến trong HTML, CSS là cách màu sắc được biểu diễn bằng giá trị thập lục phân hexadecimal.
@@ -372,7 +372,7 @@
    </body>
 </html>
 ```
-##12 Tạo form trong HTML với thẻ `<form>`,các thẻ tạo phần tử điều khiển trong form như thẻ `<input>`, thẻ `<textarea>`, `<button>` ...
+## 13 Tạo form trong HTML với thẻ `<form>`,các thẻ tạo phần tử điều khiển trong form như thẻ `<input>`, thẻ `<textarea>`, `<button>` ...
 **1. Khái niệm web form**
 + Biểu mẫu - **web form** - được tạo ra trong HTML là khu vực hình thành nên sự tương tác giữa người dùng và ứng dụng web
 + Các form cho phép người dùng nhập dữ liệu vào, sau đó gửi dữ liệu đó cho web server, hoặc nhập dữ liệu vào xử lý dữ liệu ngay tại client side.
@@ -441,7 +441,7 @@
     <button type="submit">Gửi thông tin</button>
     ```
 
-
+## 14: Các kí hiệu đặc biệt trong HTML
 
 
 
