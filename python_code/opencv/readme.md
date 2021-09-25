@@ -1,7 +1,21 @@
 # Some opencv function often using.
 
 + Ref [Motion_Detection](https://github.com/Vuong02011996/Motion_Detection)
+
+## Change illumination image by change gama
++ Ref [change-image-illumination](https://stackoverflow.com/questions/33322488/how-to-change-image-illumination-in-opencv-python)
+```python
+def adjust_gamma(image, gamma=1.0):
+
+   invGamma = 1.0 / gamma
+   table = np.array([((i / 255.0) ** invGamma) * 255
+      for i in np.arange(0, 256)]).astype("uint8")
+
+   return cv2.LUT(image, table)
+```
+
 ## Accumulating the weighted average an image
+
 ```python
 cv2.accumulateWeighted(image, self.bg, self.accumWeight)
 ```
