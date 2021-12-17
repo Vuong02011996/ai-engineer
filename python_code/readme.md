@@ -7,5 +7,7 @@
     assert len(boxes_face) == len(track_ids)
     ```
    
-2. 
+2. Thread one arguments
+    + t = KThread(target=main, args=(input_path,))
+    + Have "," after args
 # Numpy 
