@@ -10,4 +10,5 @@
 2. Thread one arguments
     + t = KThread(target=main, args=(input_path,))
     + Have "," after args
+    + [link](https://stackoverflow.com/questions/37116721/typeerror-in-threading-function-takes-x-positional-argument-but-y-were-given)
 # Numpy 
