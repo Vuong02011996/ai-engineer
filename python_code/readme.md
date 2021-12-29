@@ -7,5 +7,8 @@
     assert len(boxes_face) == len(track_ids)
     ```
    
-2. 
+2. What does the star and doublestar operator mean in a function call?
+   1. Ref [here](https://stackoverflow.com/questions/2921847/what-does-the-star-and-doublestar-operator-mean-in-a-function-call)
+   2. The single star * unpacks the sequence/collection into positional arguments.
+   3. The double star ** does the same, only using a dictionary
 # Numpy 
