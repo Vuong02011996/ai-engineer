@@ -11,4 +11,8 @@
    1. Ref [here](https://stackoverflow.com/questions/2921847/what-does-the-star-and-doublestar-operator-mean-in-a-function-call)
    2. The single star * unpacks the sequence/collection into positional arguments.
    3. The double star ** does the same, only using a dictionary
+2. Thread one arguments
+    + t = KThread(target=main, args=(input_path,))
+    + Have "," after args
+    + [link](https://stackoverflow.com/questions/37116721/typeerror-in-threading-function-takes-x-positional-argument-but-y-were-given)
 # Numpy 
