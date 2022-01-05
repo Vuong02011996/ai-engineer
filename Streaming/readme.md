@@ -81,7 +81,7 @@ sudo docker run --rm -it -p 55555:1935 -p 55556:1985 -p 55557:8080     --env CAN
 ## Using Node media-server.
 [node-media](https://www.npmjs.com/package/node-media-server)
 ```commandline
-mkdir nms
+mkdir nms (/storages/data/Project_GG/nms)
 cd nms
 npm install node-media-server
 vi app.js
@@ -106,6 +106,51 @@ var nms = new NodeMediaServer(config)
 nms.run();
 ```
 node app.js
+
+## Test
+```python
+def ffmpeg_stream():
+    url = "rtmp://0.0.0.0:55555/stream/test"
+    # url = "http://0.0.0.0:55557/stream/test.flv"
+
+    # In my mac webcamera is 0, also you can set a video file name instead, for example "/home/user/demo.mp4"
+    cap = cv2.VideoCapture("rtsp://admin:Admin123@14.241.120.239:554")
+
+    # gather video info to ffmpeg
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+    # command and params for ffmpeg
+    command = ['ffmpeg',
+               '-y',
+               '-f', 'rawvideo',
+               '-vcodec', 'rawvideo',
+               '-pix_fmt', 'bgr24',
+               '-s', "{}x{}".format(width, height),
+               '-r', str(fps),
+               '-i', '-',
+               '-c:v', 'libx264',
+               '-pix_fmt', 'yuv420p',
+               '-preset', 'ultrafast',
+               '-f', 'flv',
+               url]
+    # ffmpeg -re -i INPUT_FILE_NAME -c copy -f flv rtmp://localhost/live/STREAM_NAME
+    # using subprocess and pipe to fetch frame data
+    p = subprocess.Popen(command, stdin=subprocess.PIPE)
+
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if not ret:
+            print("frame read failed")
+            break
+
+        # YOUR CODE FOR PROCESSING FRAME HERE
+
+        # write to pipe
+        p.stdin.write(frame.tobytes())
+
+```
 
 
 # REF
