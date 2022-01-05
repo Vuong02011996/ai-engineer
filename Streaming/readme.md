@@ -77,7 +77,36 @@ docker pull ossrs/srs:4
 sudo docker run --rm -it -p 55555:1935 -p 55556:1985 -p 55557:8080     --env CANDIDATE="0.0.0.0" -p 55558:8000/udp     ossrs/srs:4 ./objs/srs -c conf/docker.conf
 """
 ```
+
 ## Using Node media-server.
+[node-media](https://www.npmjs.com/package/node-media-server)
+```commandline
+mkdir nms
+cd nms
+npm install node-media-server
+vi app.js
+
+const NodeMediaServer = require('node-media-server');
+
+const config = {
+  rtmp: {
+    port: 1935,
+    chunk_size: 60000,
+    gop_cache: true,
+    ping: 30,
+    ping_timeout: 60
+  },
+  http: {
+    port: 8000,
+    allow_origin: '*'
+  }
+};
+
+var nms = new NodeMediaServer(config)
+nms.run();
+```
+node app.js
+
 
 # REF
 1. [Tản mạn stream viblo](https://viblo.asia/p/tan-man-mot-chut-ve-ky-thuat-streaming-4P856q9BlY3)
