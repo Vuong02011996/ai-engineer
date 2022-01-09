@@ -108,6 +108,8 @@ nms.run();
 node app.js
 
 ## Test
++ https://stackoverflow.com/questions/62769828/ffmpeg-stream-video-to-rtmp-from-frames-opencv-python
++ pip install ffmpeg-python
 ```python
 def ffmpeg_stream():
     url = "rtmp://0.0.0.0:55555/stream/test"
