@@ -15,4 +15,8 @@
     + t = KThread(target=main, args=(input_path,))
     + Have "," after args
     + [link](https://stackoverflow.com/questions/37116721/typeerror-in-threading-function-takes-x-positional-argument-but-y-were-given)
+3. Sort string base on number inside
+    ```python
+    list_image.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
+    ```
 # Numpy 
