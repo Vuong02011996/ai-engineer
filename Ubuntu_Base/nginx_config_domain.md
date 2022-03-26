@@ -102,3 +102,42 @@ sudo certbot --nginx -d example.com -d www.example.com
 + [nginx](https://topdev.vn/blog/nginx-la-gi/)
 + [webserver](https://topdev.vn/blog/nginx-la-gi/)
 + https://stackoverflow.com/questions/35868976/nginx-service-failed-because-the-control-process-exited
+
+
+# Example
++ Create file conf nginx in `/etc/nginx/sites-enabled`
+```
+    server {
+    #    if ($host = stream-clover-q2.greenlabs.ai) {
+    #       return 301 https://$host$request_uri;
+    #    } # managed by Certbot
+        listen 80;
+        server_name stream-test.greenlabs.ai;
+        return 301 https://$host$request_uri;
+    }
+    server {
+            listen 443 ssl ;
+            server_name stream-test.greenlabs.ai;
+            ssl_protocols TLSv1.2;
+    
+            ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';        
+    
+            location /stream/cam_360_554.flv {
+            # Backend server to forward requests to/from
+            proxy_pass          http://192.168.111.133:55557/stream/cam_360_554.flv;
+        proxy_http_version 1.1;
+            proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Connection "";
+    
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Port "";
+            proxy_set_header X-Forwarded-Proto https;
+            }
+    #    ssl_certificate /etc/letsencrypt/live/stream-clover-q2.greenlabs.ai/fullchain.pem; # managed by Certbot
+    #    ssl_certificate_key /etc/letsencrypt/live/stream-clover-q2.greenlabs.ai/privkey.pem; # managed by Certbot
+    }
+```
++ sudo certbot --nginx -d stream-clover-manager.greenlabs.ai (create domain)
++ sudo nginx -t (check syntax file nginx)
++ sudo nginx -s reload (reload file nginx)
