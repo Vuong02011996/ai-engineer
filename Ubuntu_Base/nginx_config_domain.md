@@ -141,3 +141,5 @@ sudo certbot --nginx -d example.com -d www.example.com
 + sudo certbot --nginx -d stream-clover-manager.greenlabs.ai (create domain)
 + sudo nginx -t (check syntax file nginx)
 + sudo nginx -s reload (reload file nginx)
+
+# CORS with https api and config nginx
