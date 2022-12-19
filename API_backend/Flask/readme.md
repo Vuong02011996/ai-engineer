@@ -19,8 +19,11 @@
   + The function returns the message we want to display in the user’s browser. The default content type is HTML.
 
 # Flask-RESTPlus vs Flask-RESTX
++ Flask-RESTX is an extension for Flask that adds support for quickly building REST APIs.
++  It provides a coherent collection of decorators and tools to describe your API and expose its documentation properly (using Swagger).
 + [flask-restplus](https://flask-restplus.readthedocs.io/en/stable/index.html)
 + [flask-restx](https://flask-restx.readthedocs.io/en/latest/)
++ Flask-RESTX is a community driven fork of Flask-RESTPlus
 + Tác giả `@noirbizarre` của Flask-RESTPlus không thấy hổ trợ ae sử dụng nữa nên nhóm Flask-RESTX tạo một nhánh mới để tiếp tục phát triển hổ trợ ae.
   
 + Concept:
