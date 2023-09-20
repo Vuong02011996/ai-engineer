@@ -4,8 +4,25 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="1">
+          <list size="18">
             <item index="0" class="java.lang.String" itemvalue="tensorflow" />
+            <item index="1" class="java.lang.String" itemvalue="filterpy" />
+            <item index="2" class="java.lang.String" itemvalue="opencv-python" />
+            <item index="3" class="java.lang.String" itemvalue="python-dotenv" />
+            <item index="4" class="java.lang.String" itemvalue="moviepy" />
+            <item index="5" class="java.lang.String" itemvalue="ffmpeg-python" />
+            <item index="6" class="java.lang.String" itemvalue="torch" />
+            <item index="7" class="java.lang.String" itemvalue="lap" />
+            <item index="8" class="java.lang.String" itemvalue="torchvision" />
+            <item index="9" class="java.lang.String" itemvalue="pymilvus" />
+            <item index="10" class="java.lang.String" itemvalue="pandas" />
+            <item index="11" class="java.lang.String" itemvalue="pyyaml" />
+            <item index="12" class="java.lang.String" itemvalue="seaborn" />
+            <item index="13" class="java.lang.String" itemvalue="imutils" />
+            <item index="14" class="java.lang.String" itemvalue="schedule" />
+            <item index="15" class="java.lang.String" itemvalue="sentry-sdk" />
+            <item index="16" class="java.lang.String" itemvalue="vidgear" />
+            <item index="17" class="java.lang.String" itemvalue="msgpack-python" />
           </list>
         </value>
       </option>
