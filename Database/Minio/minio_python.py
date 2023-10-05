@@ -16,7 +16,7 @@ def upload_image(image, bucket="clover", folder_name="group", image_name="test1"
     server.
 
     Args:
-        image (np.array): numpy array image
+        image (np.array): 1_numpy array image
         folder_name(str): Folder Name on MinIO server
 
     Returns:
@@ -60,7 +60,7 @@ def read_stream_img(url, timeout=0.6):
     """
     :param url: url in minio
     :param timeout:
-    :return: numpy array
+    :return: 1_numpy array
     """
     i = 0
     response = None

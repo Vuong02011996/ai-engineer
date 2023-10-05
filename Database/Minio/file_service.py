@@ -42,7 +42,7 @@ def upload_image(image, folder_name="avatar", mode_rgb="BRG"):
     server.
 
     Args:
-        image (np.array): numpy array image
+        image (np.array): 1_numpy array image
         folder_name(str): Folder Name on MinIO server
     
     Returns:
