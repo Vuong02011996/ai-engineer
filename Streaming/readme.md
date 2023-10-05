@@ -68,15 +68,22 @@ dựa trên giao thức TCP/IP nó cho phép lấy về tài nguyên như văn b
 + Đến giữa năm 2019 thì Apple cũng cho ra mắt Low-Latency HLS thế nên tính đến thời điểm hiện tại HLS vẫn đang là giao thức streaming phổ biến nhất.
 + Ngày nay các trình duyệt không cần phải cài Flash player nữa, html5 đã hỗ trợ việc play video trực tiếp rồi.
 
-
+# Các bước setup và stream video với srs và ffmpeg python
+- B1: Set up stream server: pull image srs to PC and run docker, chú ý port ở PC vs ở cổng 1935 của docker.(55555: rtmp; 55557: http)
+- B2: Tạo và run file python như bên dưới , chọn một url_stream tương ứng với port ở bước 1.
 # Set up Stream server.
-## Using srs
+## Using srs - Simple Realtime Server
+[ref-srs-github](https://github.com/ossrs/srs)
 ```commandline
 """
 docker pull ossrs/srs:4
-sudo docker run --rm -it -p 55555:1935 -p 55556:1985 -p 55557:8080     --env CANDIDATE="0.0.0.0" -p 55558:8000/udp     ossrs/srs:4 ./objs/srs -c conf/docker.conf
+sudo docker run --restart=always -it -p 55555:1935 -p 55556:1985 -p 55557:8080     --env CANDIDATE="0.0.0.0" -p 55558:8000/udp     ossrs/srs:4 ./objs/srs -c conf/docker.conf
 """
 ```
++ `-rm: ` remove container when stop
+  + The --rm flag is used to avoid this accumulation of unused layers. 
+  + When the container is stopped, Docker will automatically remove the container and its writable layer. 
+  + This can be helpful in situations where you are running a container for a one-time task, such as running a script or executing a command, and you don't need to keep the container and its data after the task is complete
 
 ## Using Node media-server.
 [node-media](https://www.npmjs.com/package/node-media-server)
@@ -107,9 +114,13 @@ nms.run();
 ```
 node app.js
 
-## Test
+## Using ffmpeg python push stream to rtmp server
 + https://stackoverflow.com/questions/62769828/ffmpeg-stream-video-to-rtmp-from-frames-opencv-python
 + pip install ffmpeg-python
++ URL cam flv stream luôn đi cùng với rtmp server sửa 3 chỗ:
+  + rtmp -> http
+  + 55555 -> 55557
+  + thêm .flv ở cuối.
 ```python
 def ffmpeg_stream():
     url = "rtmp://0.0.0.0:55555/stream/test"
@@ -126,6 +137,7 @@ def ffmpeg_stream():
     # command and params for ffmpeg
     command = ['ffmpeg',
                '-y',
+               '-re', # '-re' is requiered when streaming in "real-time"
                '-f', 'rawvideo',
                '-vcodec', 'rawvideo',
                '-pix_fmt', 'bgr24',
