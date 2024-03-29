@@ -15,3 +15,11 @@ conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10
 # Link ref
 + [python_trending](https://www.libhunt.com/l/python/trending)
 
+
+# Ref a Thanh
+## System to maintain camera AI
++ Media pipe - https://github.com/google/mediapipe?tab=readme-ov-file - Google
++ dlstreamer - https://dlstreamer.github.io/ - Intel
++ Deepstreamer - https://github.com/NVIDIA-AI-IOT/deepstream_python_apps - Nvidia 
++ Gstreamer - FFMPEG
+
