@@ -38,10 +38,24 @@ class NumpyEncoder(json.JSONEncoder):
 @app.route("/yolov5/predict/share_memory", methods=["POST"])
 def retina():
     # get the data from request
-    # request_data = request.json
+    if request.headers['Content-Type'] == 'application/json':
+        # If content type is JSON
+        request_data = request.json
+        share_key = request_data.get("share_key")
+        # Handle the share_key as needed
+    elif request.headers['Content-Type'] == 'application/x-www-form-urlencoded':
+        # If content type is form data
+        share_key = request.form.get("share_key")
+        # Handle the share_key as needed
+    else:
+        print("error Unsupported Media Type 415")
+        return []
 
-    # share_key = request_data.get("share_key")
-    share_key = "604ef817ef7c20fc5e52a20d"
+    # Process share_key or return a response
+
+    print("share_key: ", share_key)
+    # share_key = "604ef817ef7c20fc5e52a20d"
+
     if share_key != "" and share_key is not None:
         if not (share_key in dic_key):
             dic_key[share_key] = SharedMemoryFrameReader(share_key)
