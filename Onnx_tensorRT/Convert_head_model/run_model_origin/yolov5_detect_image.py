@@ -28,6 +28,7 @@ class Y5Detect:
         if use_cuda is None:
             use_cuda = torch.cuda.is_available()
         device = torch.device('cuda:0' if use_cuda else 'cpu')
+        print("device: ", device)
 
         model = attempt_load(self.weights, map_location=device)
         return model, device
@@ -86,6 +87,7 @@ class Y5Detect:
                             # preds.append(np.array([int(x1), int(y1), int(x2), int(y2), float(score), int(cls)]))
         if show:
             if bboxes is not None:
+                image_bgr = cv2.cvtColor(image_rgb, cv2.COLOR_BGR2RGB)
                 image_show = draw_boxes(image_bgr, bboxes, scores=scores, labels=labels, class_names=self.class_names)
                 cv2.namedWindow('detections', cv2.WINDOW_NORMAL)
                 cv2.imshow('detections', image_show)
@@ -162,13 +164,31 @@ def draw_boxes(image, boxes, scores=None, labels=None, class_names=None, line_th
     return image
 
 
+def convert_yolo_to_onnx():
+    y5_detector = Y5Detect(
+        weights="/home/oryza/Desktop/Projects/ai-engineer/Onnx_tensorRT/Convert_head_model/run_model_origin/model_head/y5headbody_v2.pt")
+
+    input_image = np.random.randint(0, 255, (640, 640, 3), dtype=np.uint8)  # Example image of size 640x640
+    # Preprocess input image
+    preprocessed_image = y5_detector.preprocess_image(input_image)
+    torch.onnx.export(y5_detector.model, preprocessed_image, 'yolov5.onnx', opset_version=11)
+
+
+def test_model():
+    y5_model = Y5Detect(
+        weights="/home/oryza/Desktop/Projects/ai-engineer/Onnx_tensorRT/Convert_head_model/run_model_origin/model_head/y5headbody_v2.pt")
+
+    # img_path = "/home/oryza/Pictures/image_test/"
+    #
+    # list_image_test = glob(img_path + "*.*")
+    # for image_test in list_image_test:
+
+    image_path = '/home/oryza/Pictures/image_test/test.png'
+    image_bgr = cv2.imread(image_path)
+    image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
+    y5_model.predict(image_rgb, label_select=["head"], show=True)
+
+
 if __name__ == '__main__':
-    y5_model = Y5Detect(weights="/home/oryza/Desktop/Projects/ai-engineer/Onnx_tensorRT/Convert_head_model/run_model_origin/model_head/y5headbody_v2.pt")
-
-    img_path = "/home/oryza/Pictures/image_test/"
-
-    list_image_test = glob(img_path + "*.*")
-    for image_test in list_image_test:
-        image_bgr = cv2.imread(image_test)
-        image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
-        y5_model.predict(image_rgb, label_select=["head"], show=True)
+    # convert_yolo_to_onnx()
+    test_model()

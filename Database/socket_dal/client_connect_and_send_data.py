@@ -1,7 +1,11 @@
-from connect_db import connect_socket
+import socket
 import json
 
-client_socket = connect_socket()
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# Connect to the server
+SOCKET_HOST = "192.168.111.63"
+SOCKET_PORT = 1111
+client_socket.connect((SOCKET_HOST, SOCKET_PORT))
 
 if __name__ == '__main__':
 

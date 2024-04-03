@@ -23,3 +23,14 @@ conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10
 + Deepstreamer - https://github.com/NVIDIA-AI-IOT/deepstream_python_apps - Nvidia 
 + Gstreamer - FFMPEG
 
+## Celery
++ Van de hien tai: Khi goi api toi model xu li, api sau phai doi api truoc xu li xong moi lam viec duoc.
++ Cach su ly bat dong bo khi goi API.
+
+# Q/A a Thanh
++ How to write document: api
++ CI/CD gitlab 
+    + setup to create pull request 
+    + aprrove 
+    + create issue
++ 
