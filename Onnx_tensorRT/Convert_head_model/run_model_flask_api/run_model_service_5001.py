@@ -5,6 +5,7 @@ from flask_cors import CORS
 import sys
 import json
 import numpy as np
+import time
 
 from shm.reader import SharedMemoryFrameReader
 
@@ -37,6 +38,7 @@ class NumpyEncoder(json.JSONEncoder):
 
 @app.route("/yolov5/predict/share_memory", methods=["POST"])
 def retina():
+    start_time = time.time()
     # get the data from request
     if request.headers['Content-Type'] == 'application/json':
         # If content type is JSON
@@ -60,9 +62,9 @@ def retina():
         if not (share_key in dic_key):
             dic_key[share_key] = SharedMemoryFrameReader(share_key)
 
+
         frame_rgb = dic_key[share_key].get()
         boxes, labels, scores, detections_sort = y5_model.predict_sort(frame_rgb, label_select=["head"])
-
         data_out = {
             "boxes": boxes,
             "labels": labels,
@@ -70,6 +72,7 @@ def retina():
             "detections_sort": detections_sort,
         }
         data_out = json.dumps(data_out, cls=NumpyEncoder)
+        print("y5_model.predict_sort cost: ", time.time() - start_time)
         return data_out
 
 

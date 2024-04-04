@@ -15,7 +15,8 @@ class Y5Detect:
         """
         self.weights = weights
         self.model_image_size = 640
-        self.conf_threshold = 0.3
+        self.conf_threshold = 0.6
+        # self.conf_threshold = 0.3
         self.iou_threshold = 0.45
         self.model, self.device = self.load_model(use_cuda=True)
         # self.model, self.device = self.load_model(use_cuda=False)
@@ -129,6 +130,7 @@ class Y5Detect:
                             preds.append(np.array([int(x1), int(y1), int(x2), int(y2), float(score), int(cls)]))
 
         return bboxes, labels, scores, np.array(preds)
+        # return 1
 
 
 def draw_boxes(image, boxes, scores=None, labels=None, class_names=None, line_thickness=2, font_scale=1.0,

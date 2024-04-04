@@ -5,6 +5,11 @@ import numpy as np
 import requests
 import secrets
 import string
+import concurrent.futures
+import matplotlib
+matplotlib.use('tkagg')
+import matplotlib.pyplot as plt
+
 
 sys.path.append("../../Convert_head_model/run_model_origin")
 from Onnx_tensorRT.Convert_head_model.run_model_origin.yolov5_detect_image import draw_boxes
@@ -16,6 +21,14 @@ y5_model = Y5Detect(
 class_names = y5_model.class_names
 
 from shm.writer import SharedMemoryFrameWriter
+
+
+image_bgr = cv2.imread("/home/oryza/Pictures/image_test/test.png")
+# Resize the image to 640x640
+# image_bgr = cv2.resize(image_bgr, (640, 640))
+
+# Convert BGR to RGB
+frame_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
 
 
 def generate_random_key(length=24):
@@ -35,7 +48,7 @@ def head_detect(cam, frame_detect_queue, detections_queue):
 
         """--------------Using Share Memory______________________"""
         shm_w1.add(frame_rgb)
-        url = "http://0.0.0.0:5000/yolov5/predict/share_memory"
+        url = "http://0.0.0.0:5001/yolov5/predict/share_memory"
         payload = {}
         headers = {}
         response = requests.request("POST", url, headers=headers, data=payload)
@@ -52,11 +65,11 @@ def head_detect(cam, frame_detect_queue, detections_queue):
     cam.cap.release()
 
 
-def test_api_model(frame_rgb):
+def test_api_model():
     process_id = "604ef817ef7c20fc5e52a20d"
     shm_w1 = SharedMemoryFrameWriter(process_id)
 
-    start_time = time.time()
+
     #
     # boxes, labels, scores, detections_sort = y5_model.predict_sort(frame_rgb, label_select=["head"])
     # print("head_detect cost: ", time.time() - start_time)
@@ -64,22 +77,27 @@ def test_api_model(frame_rgb):
     """--------------Using Share Memory______________________"""
     # Using share memory để không phải gửi array ảnh qua payload api nặng
     shm_w1.add(frame_rgb)
-    url = "http://0.0.0.0:5000/yolov5/predict/share_memory"
-    payload = {}
+    url = "http://0.0.0.0:5001/yolov5/predict/share_memory"
+    payload = {"share_key": process_id}
     headers = {}
+    start_time = time.time()
     response = requests.request("POST", url, headers=headers, data=payload)
     data_out = response.json()
     boxes = np.array(data_out["boxes"])
     labels = data_out["labels"]
     scores = data_out["scores"]
     detections_sort = np.array(data_out["detections_sort"])
-    print("head_detect cost: ", time.time() - start_time)
-    image_show = draw_boxes(image_bgr, boxes, scores=scores, labels=labels, class_names=class_names)
-    cv2.namedWindow('detections', cv2.WINDOW_NORMAL)
-    cv2.imshow('detections', image_show)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # print("boxes: ", boxes)
+    # print("scores: ", scores)
+    print("call api cost: ", time.time() - start_time)
+    # image_show = draw_boxes(image_bgr, boxes, scores=scores, labels=labels, class_names=class_names)
+    # cv2.namedWindow('detections', cv2.WINDOW_NORMAL)
+    # cv2.imshow('detections', image_show)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
     """--------------END Using Share Memory______________________"""
+
+    return time.time() - start_time
 
 
 def head_detect_service(cam, frame_detect_queue, detections_queue):
@@ -109,14 +127,35 @@ def head_detect_service(cam, frame_detect_queue, detections_queue):
         scores = np.array(response["scores"])
         detections_sort = np.array(response["detections_sort"])
         print("head_detect cost: ", time.time() - start_time)
-        print("boxes, labels, scores, detections_sort: ", boxes, labels, scores, detections_sort)
+        # print("boxes, labels, scores, detections_sort: ", boxes, labels, scores, detections_sort)
 
         detections_queue.put([boxes, labels, scores, frame_rgb, detections_sort, frame_count])
 
     cam.cap.release()
 
 
+def call_api(_):
+    try:
+        return test_api_model()
+    except Exception as e:
+        return str(e)
+
+
+def test_call_100_time():
+    # Number of times to call the API
+    num_calls = 10
+
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        results = list(executor.map(lambda _: call_api(_), range(num_calls)))
+        print(results)
+        print(sum(results))
+        plt.plot(range(len(results)), results, marker='o', linestyle='-')
+        plt.show()
+
+
 if __name__ == '__main__':
-    image_bgr = cv2.imread("/home/oryza/Pictures/image_test/test.png")
-    image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
-    test_api_model(image_rgb)
+    # image_bgr = cv2.imread("/home/oryza/Pictures/image_test/test.png")
+    # image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
+    # test_api_model(image_rgb)
+
+    test_call_100_time()
