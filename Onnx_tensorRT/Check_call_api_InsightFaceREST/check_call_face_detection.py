@@ -10,8 +10,11 @@ import matplotlib
 matplotlib.use('tkagg')
 import matplotlib.pyplot as plt
 
+
 path_test_batch = "/home/oryza/Pictures/image_head_test_batch_size/"
 url_face = 'http://localhost:18081/extract'
+
+
 def convert_np_array_to_base64(image):
     """
 
@@ -87,8 +90,9 @@ def test_array_image():
 def face_detection_batch():
     # image = cv2.imread(path_test_batch + "head_4_5.png")
     images = glob.glob(os.path.join(path_test_batch, '*.png'))
+    print("len(images): ", len(images))
     target = []
-    for img in images[:2]:
+    for img in images[:5]:
         img = cv2.imread(img)
         image_base64 = convert_np_array_to_base64(img)
         target.append(image_base64)
@@ -129,7 +133,7 @@ def call_api(_):
 
 def check_call_many_times_at_the_same_time():
     # Number of times to call the API
-    num_calls = 500
+    num_calls = 10000
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         results = list(executor.map(lambda _: call_api(_), range(num_calls)))
