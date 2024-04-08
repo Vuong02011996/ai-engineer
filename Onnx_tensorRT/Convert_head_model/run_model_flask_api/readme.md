@@ -13,4 +13,5 @@
 + init model cost 2G VRAM
 + Run one cam cost > 1G RAM GPU
 => Can't use
-+ 
++ Model head open when using service: only 300MB for one model.
++ => each camera using one port head detection 

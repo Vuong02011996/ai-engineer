@@ -75,6 +75,6 @@ def retina():
 
 if __name__ == "__main__":
     MODEL_HOST = "0.0.0.0"
-    MODEL_PORT = 5000
+    MODEL_PORT = 5002
     # app.run(host=os.getenv("MODEL_HOST"), port=int(os.getenv("MODEL_PORT")), threaded=False, debug=False)
     app.run(host=MODEL_HOST, port=int(MODEL_PORT), threaded=False, debug=False)

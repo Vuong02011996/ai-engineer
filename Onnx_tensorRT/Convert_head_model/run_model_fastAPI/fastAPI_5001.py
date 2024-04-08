@@ -59,4 +59,4 @@ async def retina(share_key: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("your_script_name:app", host="0.0.0.0", port=5001, log_level="info")
+    uvicorn.run("fastAPI_5001:app", host="0.0.0.0", port=5001, log_level="info")

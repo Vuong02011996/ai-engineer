@@ -92,7 +92,7 @@ def face_detection_batch():
     images = glob.glob(os.path.join(path_test_batch, '*.png'))
     print("len(images): ", len(images))
     target = []
-    for img in images[:5]:
+    for img in images[:4]:
         img = cv2.imread(img)
         image_base64 = convert_np_array_to_base64(img)
         target.append(image_base64)

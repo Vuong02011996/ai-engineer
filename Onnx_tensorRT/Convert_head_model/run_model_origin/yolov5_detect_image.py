@@ -15,7 +15,7 @@ class Y5Detect:
         """
         self.weights = weights
         self.model_image_size = 640
-        self.conf_threshold = 0.6
+        self.conf_threshold = 0.5
         # self.conf_threshold = 0.3
         self.iou_threshold = 0.45
         self.model, self.device = self.load_model(use_cuda=True)
