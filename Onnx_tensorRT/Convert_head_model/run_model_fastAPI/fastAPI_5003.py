@@ -1,7 +1,7 @@
 import sys
 import json
 import numpy as np
-import time
+
 from fastapi import FastAPI, HTTPException, Body
 from fastapi.middleware.cors import CORSMiddleware
 from shm.reader import SharedMemoryFrameReader
@@ -42,8 +42,25 @@ class NumpyEncoder(json.JSONEncoder):
 
 @app.post("/yolov5/predict/share_memory")
 async def retina(share_key: str = Body(..., embed=True)):
+
+    # # get the data from request
+    # if request.headers['Content-Type'] == 'application/json':
+    #     # If content type is JSON
+    #     request_data = request.json
+    #     share_key = request_data.get("share_key")
+    #     # Handle the share_key as needed
+    # elif request.headers['Content-Type'] == 'application/x-www-form-urlencoded':
+    #     # If content type is form data
+    #     share_key = request.form.get("share_key")
+    #     # Handle the share_key as needed
+    # else:
+    #     print("error Unsupported Media Type 415")
+    #     return []
+
+    # Process share_key or return a response
+
     print("share_key: ", share_key)
-    start_time = time.time()
+
     if share_key != "" and share_key is not None:
         if share_key not in dic_key:
             dic_key[share_key] = SharedMemoryFrameReader(share_key)
@@ -60,11 +77,9 @@ async def retina(share_key: str = Body(..., embed=True)):
             "detections_sort": detections_sort,
         }
         # data_out = {}
-        print("y5_model.predict_sort cost: ", time.time() - start_time)
         return json.dumps(data_out, cls=NumpyEncoder)
-    else:
-        return {}
+
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("fastAPI_5000:app", host="0.0.0.0", port=5000, log_level="info")
+    uvicorn.run("fastAPI_5003:app", host="0.0.0.0", port=5003, log_level="info")

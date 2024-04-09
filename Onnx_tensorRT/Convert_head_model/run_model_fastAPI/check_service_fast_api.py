@@ -6,6 +6,11 @@ import requests
 import secrets
 import string
 import ast
+import pandas as pd
+
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+
 import concurrent.futures
 import matplotlib
 matplotlib.use('tkagg')
@@ -31,6 +36,18 @@ def generate_random_key(length=24):
     return ''.join(secrets.choice(characters) for _ in range(length))
 
 
+def create_session():
+    session = requests.Session()
+    retries = Retry(total=5, backoff_factor=1, status_forcelist=[500, 502, 503, 504])
+    adapter = HTTPAdapter(pool_connections=100, pool_maxsize=100, max_retries=retries)
+    session.mount('http://', adapter)
+    session.mount('https://', adapter)
+    return session
+
+
+session = create_session()
+
+
 def test_api_model():
 
     process_id = "604ef817ef7c20fc5e52a20d"
@@ -48,7 +65,9 @@ def test_api_model():
     data = {"share_key": process_id}
 
     # Send POST request to the endpoint
-    response = requests.post(url, json=data)
+    response = session.post(url, json=data)
+    # response = requests.post(url, json=data)
+
     data_out = response.json()
     data_out = ast.literal_eval(data_out)
     boxes = np.array(data_out["boxes"])
@@ -77,14 +96,19 @@ def call_api(_):
 
 def test_call_100_time():
     # Number of times to call the API
-    num_calls = 1000
+    num_calls = 100
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         results = list(executor.map(lambda _: call_api(_), range(num_calls)))
         print(results)
         print(sum(results))
-        plt.plot(range(len(results)), results, marker='o', linestyle='-')
-        plt.show()
+        # plt.plot(range(len(results)), results, marker='o', linestyle='-')
+        # plt.show()
+        df = pd.DataFrame(np.array(results), columns=['Values'])
+        # Save DataFrame to text file
+        df.to_csv(
+            'model_head_' + str(num_calls) + '.txt',
+            index=False)
 
     # Check results
     # for i, result in enumerate(results):
@@ -98,3 +122,4 @@ def test_call_100_time():
 if __name__ == '__main__':
     # test_api_model()
     test_call_100_time()
+    session.close()
