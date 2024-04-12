@@ -15,3 +15,8 @@
 => Can't use
 + Model head open when using service: only 300MB for one model.
 + => each camera using one port head detection 
+
+
+# Consider using : websocket, grpc, redis, ...
+File "/usr/local/lib/python3.8/dist-packages/uvicorn/server.py", line 68, in run
+return asyncio.run(self.serve(sockets=sockets)) // insightFace
