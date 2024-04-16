@@ -27,7 +27,9 @@ class_names = y5_model.class_names
 
 from shm.writer import SharedMemoryFrameWriter
 
-image_bgr = cv2.imread("/home/oryza/Pictures/image_test/test.png")
+# image_bgr = cv2.imread("/home/oryza/Pictures/image_test/test.png")
+image_bgr = cv2.imread("/home/oryza/Pictures/image_test/img3.jpg")
+# image_bgr = cv2.imread("/home/oryza/Pictures/image_test/couple.jpg")
 frame_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
 
 
@@ -120,6 +122,6 @@ def test_call_100_time():
 
 
 if __name__ == '__main__':
-    # test_api_model()
-    test_call_100_time()
-    session.close()
+    test_api_model()
+    # test_call_100_time()
+    # session.close()
