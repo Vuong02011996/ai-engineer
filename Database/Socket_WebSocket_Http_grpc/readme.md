@@ -41,3 +41,8 @@
     + Giao thức chuẩn phổ biến nhất của WebSocket là ws:// . Còn giao thức secure là wss:// . WebSocket có chuẩn giao tiếp là String và hỗ trợ buffered arrays cùng blobs.
     + Tuy ưu việt là thế nhưng Web socket vẫn có một số nhược điểm. Một số trình duyên chưa có khả năng tương thích với Websocket. 
     + Bên cạnh đó, Websocket cũng sẽ dễ bị hạn chế với các dịch vụ có phạm vi yêu cầu.
+
+# Compare http(fastAPI), socket(tcp), grpc(http2):
++ Socket - web socket chậm nhất.
++ FastAPI - (32FPS)
++ grpc - (36FPS)
