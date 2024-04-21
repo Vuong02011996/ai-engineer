@@ -6,3 +6,7 @@
 
 ## Khóa ngoại (a foreign key )
 + Khóa ngoại cuả một table được xem là con trỏ tới khóa chính của table khác.
+
+# ref
+
+MQTT vs. Kafka: Friends, Not Foes, in the World of Real-Time IoT Data Processing

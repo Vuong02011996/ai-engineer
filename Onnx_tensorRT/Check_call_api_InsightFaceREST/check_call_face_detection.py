@@ -5,6 +5,14 @@ import requests
 import glob
 import cv2
 import concurrent.futures
+import time
+import matplotlib
+matplotlib.use('tkagg')
+import matplotlib.pyplot as plt
+
+
+path_test_batch = "/home/oryza/Pictures/image_head_test_batch_size/"
+url_face = 'http://localhost:18081/extract'
 
 
 def convert_np_array_to_base64(image):
@@ -55,7 +63,7 @@ def extract_vecs(ims, max_size=[640, 480]):
 
 
 def test_array_image():
-    image = cv2.imread("/home/oryza/Pictures/image_test/couple.jpg")
+    image = cv2.imread(path_test_batch + "head_4_5.png")
     image_base64 = convert_np_array_to_base64(image)
     req = {
         "images": {
@@ -79,9 +87,30 @@ def test_array_image():
     return data
 
 
+def face_detection_batch():
+    # image = cv2.imread(path_test_batch + "head_4_5.png")
+    images = glob.glob(os.path.join(path_test_batch, '*.png'))
+    print("len(images): ", len(images))
+    target = []
+    for img in images[:4]:
+        img = cv2.imread(img)
+        image_base64 = convert_np_array_to_base64(img)
+        target.append(image_base64)
+
+    req = {"images": {"data": target}, "threshold": 0.5, "return_landmarks": True, "embed_only": False,
+           "extract_embedding": False}
+    start_time = time.time()
+    resp = requests.post(url_face, json=req)
+    data = resp.json()
+    # print(data)
+    print("cost: ", time.time() - start_time)
+    return time.time() - start_time
+
+
 def face_detection():
-    image = cv2.imread("/home/oryza/Pictures/image_test/couple.jpg")
+    image = cv2.imread(path_test_batch + "head_4_5.png")
     image_base64 = convert_np_array_to_base64(image)
+    start_time = time.time()
     req = {
         "images": {
             "data": [image_base64],
@@ -89,36 +118,36 @@ def face_detection():
     }
     resp = requests.post('http://localhost:18081/extract', json=req)
     data = resp.json()
-    return data
+    # print(data)
+    print("cost ", time.time() - start_time)
+    return time.time() - start_time
 
 
-def call_api():
+def call_api(_):
     try:
-        return face_detection()
+        # return face_detection()
+        return face_detection_batch()
     except Exception as e:
         return str(e)
 
 
 def check_call_many_times_at_the_same_time():
     # Number of times to call the API
-    num_calls = 100
+    num_calls = 10000
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        results = list(executor.map(call_api, range(num_calls)))
-
-    # Check results
-    for i, result in enumerate(results):
-        if isinstance(result, dict):
-            print(f"API call {i + 1} was successful.")
-            # Process the response data if needed
-        else:
-            print(f"API call {i + 1} failed with error: {result}")
+        results = list(executor.map(lambda _: call_api(_), range(num_calls)))
+        print(results)
+        print(sum(results))
+        plt.plot(range(len(results)), results, marker='o', linestyle='-')
+        plt.show()
 
 
 if __name__ == '__main__':
-    images_path = '/home/oryza/Pictures/image_test'
-    # images = os.path.listdir(images_path)
-    images = glob.glob(os.path.join(images_path, '*.jpg'))
-    data = extract_vecs(images)
+    # images_path = '/home/oryza/Pictures/image_test'
+    # # images = os.path.listdir(images_path)
+    # images = glob.glob(os.path.join(images_path, '*.jpg'))
+    # data = extract_vecs(images)
 
     # test_array_image()
+    check_call_many_times_at_the_same_time()
