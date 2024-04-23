@@ -50,6 +50,8 @@
   + Face detection model: yolov7-face -> onnx -> tensorRT
   + Face recognition: webface_r50.onnx from deepinsight -> tensorRT
   + Usage: with docker and without docker 
+  + sudo docker run --gpus all  --rm -it -v $(pwd):/app hiennguyen9874/deepstream-face-recognition:deepstream-6.0.1 Error:
+    + bash: ./bin/deepstream-app: No such file or directory
 
 + https://github.com/zhouyuchong/face-recognition-deepstream/tree/main - zhouyuchong - 47*
   + Deepstream app use retinaface and arcface for face recognition.
@@ -88,28 +90,6 @@
   + Face Recognition on **Jetson Nano** using DeepStream and Python.
   + No using docker 
 
-
-* Install all dependence of deepstream on docker and run example
-+ Run simple example using deepstream docker guidance: https://gist.github.com/priyanshthakore/bd37ff636985640af1e97ad19942d02a
-  + sudo docker run -it --rm --net=host --gpus all  -e DISPLAY=$DISPLAY -v /home/oryza/Desktop/DeepStream/app/:/app nvcr.io/nvidia/deepstream
-
-
-# Run example deepstream with docker
-+ docker pull nvcr.io/nvidia/deepstream:6.4-samples-multiarch
-+ sudo docker run -it --rm --net=host --gpus all  -e DISPLAY=$DISPLAY -v /home/oryza/Desktop/DeepStream/app/:/app 48
-  + inside docker need not sudo
   
-  + Read file readme and follow instruction:
 
-  + apt-get update
-  + apt-get install libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev    libgstrtspserver-1.0-dev libx11-dev
   
-  + make khong duoc
-  + clone soure python apps ve
-  + chay test : //opt/nvidia/deepstream/deepstream-6.4/samples/streams/sample_1080p_h264.mp4
-  + python3 deepstream_test_3.py -i file:///home/ubuntu/video1.mp4 file:///home/ubuntu/video2.mp4
-  + python3 deepstream_test_3.py -i file:///opt/nvidia/deepstream/deepstream-6.4/samples/streams/sample_1080p_h264.mp4 file:///opt/nvidia/deepstream/deepstream-6.4/samples/streams/sample_1080p_h264.mp4
-  + 
-  + Install: 
-    + apt install python3-gi python3-dev python3-gst-1.0 -y
-    + ModuleNotFoundError: No module named 'pyds'

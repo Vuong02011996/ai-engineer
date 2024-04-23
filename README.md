@@ -22,6 +22,12 @@ conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10
 + dlstreamer - https://dlstreamer.github.io/ - Intel
 + Deepstreamer - https://github.com/NVIDIA-AI-IOT/deepstream_python_apps - Nvidia 
 + Gstreamer - FFMPEG
++ OpenCV graph 
++ NVIDIA DRIVE End-to-End Solutions for Autonomous Vehicles - https://developer.nvidia.com/drive
++ A General-purpose Parallel and Heterogeneous Task Programming System - https://github.com/taskflow/taskflow
++ trild-vietnam - Isarel
++ NVIDIA Metropolis Microservices - https://developer.nvidia.com/metropolis-microservices
++ Nvidia City: https://github.com/NVIDIAAICITYCHALLENGE/2023AICITY_Code_From_Top_Teams?tab=readme-ov-file
 
 ## Celery
 + Van de hien tai: Khi goi api toi model xu li, api sau phai doi api truoc xu li xong moi lam viec duoc.
