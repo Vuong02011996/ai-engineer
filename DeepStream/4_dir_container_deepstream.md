@@ -42,7 +42,7 @@ LicenseAgreement.pdf                    README.rhel  install.sh     rtpjitterbuf
 NvidiaDeepStreamDevelopmentLicense.pdf  bin          lib            samples                             uninstall.sh  user_deepstream_python_apps_install.sh`
 
 ## folder deepstream the same with deepstream-6.4
-### Folder samples: 
+### **1. Folder samples**: 
   + **configs**  
   + **models**  
   + prepare_classification_test_video.sh  
@@ -137,7 +137,7 @@ NvidiaDeepStreamDevelopmentLicense.pdf  bin          lib            samples     
         Secondary_VehicleMake  Segmentation_Industrial  densenet_onnx          mobilenet_v1        ssd_mobilenet_v1_coco_2018_01_28`
 
 
-### Folder sources:
+### **2. Folder sources**:
 **CLONE Deepstream python apps in HERE** `deepstream_python_apps`
 + SONYCAudioClassifier  
 + TritonBackendEnsemble  
@@ -151,7 +151,7 @@ NvidiaDeepStreamDevelopmentLicense.pdf  bin          lib            samples     
 + tools  
 + tracker_ReID
 
-  + deepstream_python_apps:
+  + deepstream_python_apps: Run example deepstream with python
     `3rdparty  FAQ.md  HOWTO.md  LICENSE  README.md  THIRD_PARTY_LICENSE  apps  bindings  docs  notebooks  tests`
     + 3rdparty: `gstreamer  pybind11` **Initialization of submodules and Installing Gst-python in HERE**
     + bindings: **Compiling the bindings in HERE**
@@ -160,5 +160,8 @@ NvidiaDeepStreamDevelopmentLicense.pdf  bin          lib            samples     
         common                               deepstream-imagedata-multistream-cupy       deepstream-preprocess-test   deepstream-ssd-parser      deepstream-test2
         deepstream-custom-binding-test       deepstream-imagedata-multistream-redaction  deepstream-rtsp-in-rtsp-out  deepstream-test1           deepstream-test3
         deepstream-demux-multi-in-multi-out  deepstream-nvdsanalytics                    deepstream-segmask           deepstream-test1-rtsp-out  deepstream-test4`
-  + apps: 
+  + apps: Run example deepstream with C/C++
     `apps-common  audio_apps  sample_apps`
+    + /opt/nvidia/deepstream/deepstream/sources/apps/sample_apps/deepstream-test3
+    + `Makefile  README  deepstream_test3_app.c  dstest3_config.yml  dstest3_pgie_config.txt  dstest3_pgie_config.yml  dstest3_pgie_nvinferserver_config.txt`
+    

@@ -11,4 +11,8 @@
    + rm ~/.cache/gstreamer-1.0/registry.x86_64.bin
 4. ERROR from primary_gie: gstnvinferserver_impl start failed 
    + when plugin-type = 1 to use nvinferserver 
-   + Triton Server Settings
+   + Triton Server Settings 
+   + Maintain
+5. ImportError: libavcodec.so.58: cannot open shared object file: No such file or directory
+   + Error when run example deepstream-imagedata-multistream-redaction have import cv2
+   + 

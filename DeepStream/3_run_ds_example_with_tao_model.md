@@ -48,4 +48,12 @@ https://github.com/NVIDIA-AI-IOT/deepstream_reference_apps/tree/master/deepstrea
 
 
 ### Triton Server Settings
+cd /opt/tritonserver/bin 
+Run: ./tritonserver  --model-repository= .
+
+Note:
+Run example in samples/configs/tao_pretrained_models haven't python file
+Using deepstream-app -c deepstream_app_source1_peoplenet.txt
+So - Hard to custom model, code.
+/opt/nvidia/deepstream/deepstream/samples/configs/deepstream-app-triton-grpc/README
 
