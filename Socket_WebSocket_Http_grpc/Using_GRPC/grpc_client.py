@@ -1,7 +1,7 @@
 import grpc
 import numpy as np
 
-from Database.Socket_WebSocket_Http_grpc.Using_GRPC.generate_code_for_grpc import api_pb2, api_pb2_grpc
+from Socket_WebSocket_Http_grpc.Using_GRPC.generate_code_for_grpc import api_pb2, api_pb2_grpc
 from shm.writer import SharedMemoryFrameWriter
 import cv2
 

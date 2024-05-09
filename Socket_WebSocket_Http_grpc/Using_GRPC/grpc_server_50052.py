@@ -1,6 +1,6 @@
 import grpc
 from concurrent import futures
-from Database.Socket_WebSocket_Http_grpc.Using_GRPC.generate_code_for_grpc import api_pb2, api_pb2_grpc
+from Socket_WebSocket_Http_grpc.Using_GRPC.generate_code_for_grpc import api_pb2, api_pb2_grpc
 from shm.reader import SharedMemoryFrameReader
 from yolov5_detect_image import Y5Detect
 import time
@@ -50,3 +50,11 @@ def serve():
 
 if __name__ == '__main__':
     serve()
+    """
+    Error: grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+        status = StatusCode.UNKNOWN
+        details = "Exception calling application: The size of tensor a (15) must match the size of tensor b (12) at non-singleton dimension 2"
+        debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: The size of tensor a (15) must match the size of tensor b (12) at non-singleton dimension 2", grpc_status:2, created_time:"2024-05-09T16:05:27.989699818+07:00"}"
+    >
+    """
+

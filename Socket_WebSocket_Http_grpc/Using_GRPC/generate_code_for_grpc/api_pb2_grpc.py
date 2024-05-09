@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from Database.Socket_WebSocket_Http_grpc.Using_GRPC.generate_code_for_grpc import api_pb2 as api__pb2
+from Socket_WebSocket_Http_grpc.Using_GRPC.generate_code_for_grpc import api_pb2 as api__pb2
 
 
 class YOLOv5Stub(object):
