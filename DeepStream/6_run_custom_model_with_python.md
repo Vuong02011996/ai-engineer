@@ -23,5 +23,5 @@
   + cat labels_peoplenet.txt `Person Bag Face`
 + Run with rtsp: Unauthorized
   `python3 deepstream_test_3.py -i rtsp://admin:oryza@2023@192.168.111.63:7001/9a5dcef8-8028-5c36-56b9-ee51381f454d --pgie nvinfer -c config_infer_primary_peoplenet.txt`
-
+  + Có thế do @ trong rtsp: rtsp://192.168.111.252:554/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif
 ## custom model retinaface and arcface

@@ -16,6 +16,9 @@
   + -v /tmp/.X11-unix/:/tmp/.X11-unix:  Mounts the host's X11 Unix socket (/tmp/.X11-unix/) into the container, 
     facilitating communication between GUI applications within the container and the host's X server for display.
   + b8: image id 
+# Go into the container again
++ ```sudo docker start d2```: start docker d2
++ ```sudo docker exec -it d2 bash```: go to contain and run example again.
 
 # Run example python 
 + Get into container : docker run -it or docker exec -it 

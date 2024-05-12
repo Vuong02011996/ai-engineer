@@ -17,6 +17,13 @@
 + deepstream  
 + deepstream-6.4
 
+**Care folder sources and samples**
+    + sources: place to clone example deepstream python
+    + samples: 
+        + configs:
+        + models:
+        + streams: 
+
 **TWO THIS FOLDERS IS DONG BO vs NHAU, mkdir/rm folder , both in the same**
 
 + deepstream:
