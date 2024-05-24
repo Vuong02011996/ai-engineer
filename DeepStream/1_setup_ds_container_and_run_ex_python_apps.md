@@ -17,6 +17,9 @@
     facilitating communication between GUI applications within the container and the host's X server for display.
   + b8: image id 
 # Go into the container again
++ Before start container to avoid error `No protocol specified` run:
+  + `export DISPLAY=:1`
+  + `xhost +`
 + ```sudo docker start d2```: start docker d2
 + ```sudo docker exec -it d2 bash```: go to contain and run example again.
 

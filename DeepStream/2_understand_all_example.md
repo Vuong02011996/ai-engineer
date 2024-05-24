@@ -29,4 +29,8 @@
 + https://github.com/NVIDIA-AI-IOT/deepstream_python_apps/tree/master/apps/deepstream-imagedata-multistream-redaction
 + apt update
 + apt install python3-numpy python3-opencv -y
+
+
+# Understand code 
+## Example 1 
 + 
