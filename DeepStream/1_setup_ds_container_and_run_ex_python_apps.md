@@ -1,4 +1,5 @@
 # Choice docker image
++ https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_docker_containers.html
 + docker pull nvcr.io/nvidia/deepstream:6.4-gc-triton-devel: all for development 
 + docker pull nvcr.io/nvidia/deepstream:6.4-triton-multiarch: for development but not graph composer
 + docker pull nvcr.io/nvidia/deepstream:6.4-samples-multiarch: contains the runtime libraries - not for development.

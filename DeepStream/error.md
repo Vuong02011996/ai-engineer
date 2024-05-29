@@ -17,3 +17,7 @@
    + Error when run example deepstream-imagedata-multistream-redaction have import cv2
 6. `Gst-stream-error-quark: Internal data stream error`
    + Lỗi input là file .mp4 convert to .h264 to run.
+
+7. `No module named ‘cuda’`
+   + https://forums.developer.nvidia.com/t/no-module-named-cuda/293285
+   + `pip3 install cuda-python`
