@@ -73,5 +73,6 @@
 + cp sample_1080p_h264.mp4 /opt/nvidia/deepstream/deepstream-6.4/sources/deepstream_python_apps/apps/deepstream-test1
 + cd sources/deepstream_python_apps/apps/deepstream-test1
 + run : python3 deepstream_test_1.py sample_1080p_h264.mp4 
++ `python3 deepstream_test_1.py file:///opt/nvidia/deepstream/deepstream-6.4/samples/streams/sample_1080p_h264.mp4`
 
 
