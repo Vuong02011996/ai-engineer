@@ -1,7 +1,5 @@
 + https://docs.nvidia.com/metropolis/deepstream/dev-guide/index.html
 
-# Ref
-+ https://hackmd.io/@congphu/SkN6RIXY_
 # NGC 
 + Nvidia GPU cloud (NGC) is a GPU-accelerated cloud platform optimized for deep learning and scientific computing.
 # Nvidia

@@ -16,7 +16,7 @@
 + Configure Gst-nvstreammux to generate a batch of frames and infer on it for better resource utilization
 + Extract the stream metadata, which contains useful information about the frames in the batched buffer
 
-+ Run 1 video: `python3 deepstream_test_3.py -i file:///opt/nvidia/deepstream/deepstream-6.4/samples/streams/sample_720p.mp4 `
++ Run 1 video: `python3 deepstream_test_3.py -i file:///opt/nvidia/deepstream/deepstream-7.0/samples/streams/sample_720p.mp4 `
 + Run 4 video:
   `python3 deepstream_test_3.py -i file:///opt/nvidia/deepstream/deepstream-6.4/samples/streams/sample_720p.mp4 file:///opt/nvidia/deepstream/deepstream-6.4/samples/streams/sample_720p.mp4 file:///opt/nvidia/deepstream/deepstream-6.4/samples/streams/sample_720p.mp4 file:///opt/nvidia/deepstream/deepstream-6.4/samples/streams/sample_720p.mp4`
 + Default using: 
@@ -32,5 +32,9 @@
 
 
 # Understand code 
-## Example 1 
-+ 
+## Example test 1
+## Custom
++ In: /opt/nvidia/deepstream/deepstream-7.0/sources/deepstream_python_apps/apps/deepstream-test1
+  + Run: python3 deepstream_test_1_custom_v1.py  sample_1080p_h264.mp4
++ cd /opt/nvidia/deepstream/deepstream-7.0/sources_python/apps/deepstream-test1
++ cp deepstream_test_1_custom_v1.py ../../../sources/deepstream_python_apps/apps/deepstream-test1

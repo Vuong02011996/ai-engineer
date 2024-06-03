@@ -36,3 +36,7 @@ pm2 stop 0
 pm2 show run_model
 pm2 start python.py
 ```
+# Monitor 
+    ```commandline
+        pm2 monit
+    ```

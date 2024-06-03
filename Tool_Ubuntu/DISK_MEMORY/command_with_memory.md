@@ -19,7 +19,7 @@
    86  sudo du -sh / | sort -rh | head -n 15
    87  sudo du -sh /. | sort -rh | head -n 15
    88  sudo du -sh /* | sort -rh | head -n 15
-   89  df -h
+`   89  df -h`
    90  sudo du -sh /home/* | sort -rh | head -n 15
    91  sudo du -sh /home/gg-greenlab/* | sort -rh | head -n 15
    92  sudo du -sh /home/gg-greenlab/anaconda3/* | sort -rh | head -n 15

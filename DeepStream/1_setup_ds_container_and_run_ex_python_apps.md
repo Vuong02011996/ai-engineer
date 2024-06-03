@@ -17,6 +17,7 @@
   + -v /tmp/.X11-unix/:/tmp/.X11-unix:  Mounts the host's X11 Unix socket (/tmp/.X11-unix/) into the container, 
     facilitating communication between GUI applications within the container and the host's X server for display.
   + b8: image id 
++ ```sudo docker run -it --net=host --gpus all -e DISPLAY=$DISPLAY --device /dev/snd -v /tmp/.X11-unix/:/tmp/.X11-unix -v /home/oryza/Desktop/DeepStream/deepstream_python_apps-1.1.8/:/opt/nvidia/deepstream/deepstream-7.0/sources/ 7a```
 # Go into the container again
 + Before start container to avoid error `No protocol specified` run:
   + `export DISPLAY=:1`
@@ -72,7 +73,11 @@
 + cd /opt/nvidia/deepstream/deepstream-6.4/samples/streams
 + cp sample_1080p_h264.mp4 /opt/nvidia/deepstream/deepstream-6.4/sources/deepstream_python_apps/apps/deepstream-test1
 + cd sources/deepstream_python_apps/apps/deepstream-test1
-+ run : python3 deepstream_test_1.py sample_1080p_h264.mp4 
-+ `python3 deepstream_test_1.py file:///opt/nvidia/deepstream/deepstream-6.4/samples/streams/sample_1080p_h264.mp4`
++ run : python3 deepstream_test_1.py sample_720p.h264 
++ ` Not run ??: python3 deepstream_test_1.py file:///opt/nvidia/deepstream/deepstream-7.0/samples/streams/sample_720p.h264`
 
-
+# Run docker with mount repo python app 
+    ```commandline
+    git config --global --add safe.directory /opt/nvidia/deepstream/deepstream-7.0/sources_python
+    
+    ```

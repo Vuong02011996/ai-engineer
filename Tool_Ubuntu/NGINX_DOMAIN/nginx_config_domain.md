@@ -2,7 +2,7 @@
 + Web server là máy chủ cài đặt các chương trình phục vụ các ứng dụng web.
 +  Webserver có khả năng **tiếp nhận request** từ các trình duyệt web và gửi phản hồi đến client thông qua giao thức HTTP hoặc các giao thức khác
 +  Có nhiều web server khác nhau như: Apache, **Nginx**, IIS, … Web server thông dụng nhất hiện nay:
-![web server](image/webserver.png)
+![web server](../image/webserver.png)
 ## Nginx
 + NGINX là một web server mạnh mẽ mã nguồn mở. Nginx sử dụng kiến trúc đơn luồng, hướng sự kiện vì thế nó hiệu quả hơn Apache server.
 + Những tính năng của máy chủ HTTP Nginx:
@@ -18,7 +18,7 @@
   + Nhưng thứ quan trọng nhất cần chú ý là tệp tin nginx.conf và thư mục sites-available.
 
 + Cấu hình Nginx.
-  ![nginx.conf](image/nginx.png)
+  ![nginx.conf](../image/nginx.png)
   + Tệp tin nginx.conf được cấu trúc thành các ngữ cảnh. Đầu tiên là events, và thứ 2 là http.
   + Nhiều thứ trong tệp tin này có thể tinh chỉnh dựa theo nhu cầu của bạn, nhưng bạn cũng có thể sử dụng các thiết lập mặc định:
     + **worker_processes**: Thiết lập này định nghĩa số worker processes mà NGINX sẽ sử dụng. Bởi vì NGINX là đơn luồng (single threaded), nó thường bằng với số lõi CPU.
@@ -30,7 +30,7 @@
   + Nó cho phép web server có thể cấu hình cho nhiều trang web với các cấu hình riêng biệt.
   + Các trang web trong thư mục không live và chỉ được cho phép nếu chúng ta tạo một symlink tới thư mục sites-enabled.
   + Bạn có thể tạo một tệp tin mới cho ứng dụng của mình hoặc chỉnh sửa một tệp tin mặc định. Một cấu hình thông thường sẽ như dưới đây:
-  ![site-enable](image/site_enable.png)
+  ![site-enable](../image/site_enable.png)
   
     + Giống như nginx.conf, nó cũng sử dụng khái niệm các ngữ cảnh lồng nhau (và tất cả cũng được lồng trong ngữ cảnh HTTP CỦA nginx.conf, vì thế chúng cũng kế thừa mọi thứ từ nó).
     + Ngữ cảnh **server** định nghĩa một server ảo để xử lý các request từ client của bạn. Bạn có thể có nhiều khối server, và NGINX sẽ chọn một trong số chúng dựa trên các chỉ thị _listen_ và _server_name_.

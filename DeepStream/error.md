@@ -15,7 +15,7 @@
    + Maintain
 5. `ImportError: libavcodec.so.58: cannot open shared object file: No such file or directory`
    + Error when run example deepstream-imagedata-multistream-redaction have import cv2
-6. `Gst-stream-error-quark: Internal data stream error`
+6. `Gst-stream-error-quark: Internal data stream error` in run deepstream-test1
    + Lỗi input là file .mp4 convert to .h264 to run.
 
 7. `No module named ‘cuda’`
