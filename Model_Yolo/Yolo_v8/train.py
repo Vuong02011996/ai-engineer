@@ -12,3 +12,4 @@ results = model.train(data="/home/oryza/Desktop/Data_Training/Yolo_v8/dataset/co
                       imgsz=640,
                       cache=True,
                       verbose=True)
+
