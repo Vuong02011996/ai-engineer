@@ -25,6 +25,7 @@ pm2 restart ecosystem.test.config.yaml
 + [Auto start when reboot](https://stackoverflow.com/questions/60095316/does-pm2-auto-restart-application-after-reboot-by-default)
 pm2 start ecosystem.test.config.yaml
 pm2 startup
+  + sudo su -c "env PATH=$PATH:/home/unitech/.nvm/versions/node/v14.3/bin pm2 startup <distribution> -u <user> --hp <home-path>
 pm2 save 
 
 # Command
@@ -40,3 +41,4 @@ pm2 start python.py
     ```commandline
         pm2 monit
     ```
+# 
