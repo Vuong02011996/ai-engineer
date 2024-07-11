@@ -41,4 +41,6 @@ pm2 start python.py
     ```commandline
         pm2 monit
     ```
-# 
+# View log file
++ `/home/oryza/.pm2/logs`
++ view 20 line before and after grep : `grep -C  20 "Camera can't read frame" loitering-production-30001-out.log`
