@@ -42,10 +42,10 @@ def save_frames_from_video(video_path, output_folder):
 
 if __name__ == '__main__':
     # Path to the video file
-    video_path = 'path/to/your/video.mp4'
+    video_path = '/home/oryza/Videos/lang_vang_trc_công/lang_vang_4.mkv'
 
     # Output folder to save frames
-    output_folder = 'path/to/save/frames'
+    output_folder = '/home/oryza/Pictures/images_test_tracking_label'
 
     # Call the function to save frames from the video
     save_frames_from_video(video_path, output_folder)
