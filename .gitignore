@@ -62,7 +62,7 @@ Database/Milvus/Milvus_0_10_6/milvus_volumes/*
 Onnx_tensorRT/Convert_head_model/run_model_origin/model_head/y5headbody_v2.pt
 *.txt
 *.pt
-Model_Yolo/Yolo_v8/runs/detect/*
-Model_Yolo/Yolo_v8/models/*
+Models_Computer_Vision/Model_Yolo/Yolo_v8/runs/detect/*
+Models_Computer_Vision/Model_Yolo/Yolo_v8/models/*
 
 
