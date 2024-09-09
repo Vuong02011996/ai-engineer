@@ -56,4 +56,4 @@ docker compose -f docker-compose.yml -f components/serverless/docker-compose.ser
   + Create file obj.data save path
   + Create file obj.names to save classes
   + Create file train.txt with path to file image.
-+ Zip folder data with command: `zip -r9 data.zip ./*` (don't using compress in ui ubuntu)
++ Zip folder data with command: `zip -r9 data.zip ./*`
