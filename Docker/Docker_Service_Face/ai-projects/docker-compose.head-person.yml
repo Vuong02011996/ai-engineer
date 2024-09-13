@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  head_person_1:
+    image: registry.oryza.vn/head-person-detection:latest
+    env_file:
+      - ./head_person_detection/.env
+    volumes:
+      - ./head_person_detection:/app/src/head_person
+      - "/dev/shm:/dev/shm"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+  head_person_2:
+    image: registry.oryza.vn/head-person-detection:latest
+    env_file:
+      - ./head_person_detection/.env
+    volumes:
+      - ./head_person_detection:/app/src/head_person
+      - "/dev/shm:/dev/shm"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

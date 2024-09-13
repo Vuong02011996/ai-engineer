@@ -1,0 +1,8 @@
+/* styles/custom.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.table-text-custom {
+  @apply font-medium text-gray-500 text-sm;
+}

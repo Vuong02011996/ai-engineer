@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package api;
+
+message Box {
+    repeated float coordinates = 1;
+}
+
+message Request {
+    string share_key = 1;
+}
+
+message Response {
+    repeated Box boxes = 1;
+    repeated string labels = 2;
+    repeated float scores = 3;
+    repeated Box detections_sort = 4;
+}
+
+service YOLOv5 {
+    rpc Predict(Request) returns (Response);
+}

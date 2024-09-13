@@ -1,0 +1,3 @@
+[submodule "core/models_local/face_detection/core/models_local/face_detection/DSFD-Pytorch-Inference"]
+	path = core/models_local/face_detection/core/models_local/face_detection/DSFD-Pytorch-Inference
+	url = https://github.com/hukkelas/DSFD-Pytorch-Inference.git

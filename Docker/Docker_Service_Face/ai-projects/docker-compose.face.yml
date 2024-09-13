@@ -1,0 +1,25 @@
+services:
+  face_recognition_1:
+    image: registry.oryza.vn/face-recognition-base:latest
+    env_file:
+      - ./face-recognition-base/.env
+    environment:
+      - ip_run_service_head=head_person_1
+      - ip_run_service_insight=insightface_1
+    ports:
+      - "30000:30000"
+    volumes:
+      - ./face-recognition-base:/app
+      - "/dev/shm:/dev/shm"
+  face_recognition_2:
+    image: registry.oryza.vn/face-recognition-base:latest
+    env_file:
+      - ./face-recognition-base/.env
+    environment:
+      - ip_run_service_head=head_person_2
+      - ip_run_service_insight=insightface_2
+    ports:
+      - "30001:30000"
+    volumes:
+      - ./face-recognition-base:/app
+      - "/dev/shm:/dev/shm"

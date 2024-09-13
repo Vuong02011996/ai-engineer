@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "oryza-ai"
+version = "0.1.0"
+description = "Oryza AI Backend"
+authors = ["Oryza Backend Team"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "0.111.0"
+idna = "3.4"
+iniconfig = "2.0.0"
+lazy-model = "0.2.0"
+mongomock = "4.1.2"
+mongomock-motor = "0.0.21"
+motor = "3.3.1"
+packaging = "23.2"
+passlib = "1.7.4"
+pluggy = "1.3.0"
+pymongo = "4.5.0"
+pytest = "7.4.2"
+pytest-mock = "3.11.1"
+sentinels = "1.0.0"
+sniffio = "1.3.0"
+toml = "0.10.2"
+tomli = "2.0.1"
+typing-extensions = "4.8.0"
+uvicorn = {extras = ["standard"], version = "^0.29.0"}
+pydantic-settings = "2.2.1"
+starlette = "^0.37.2"
+python-jose = "^3.3.0"
+odmantic = "^1.0.1"
+pydantic = {extras = ["email"], version = "<2.7"}
+python-multipart = "^0.0.9"
+tenacity = "^8.2.3"
+pika = "^1.3.2"
+requests = "^2.31.0"
+httpx = "^0.27.0"
+ping3 = "^4.0.8"
+opencv-python = "^4.9.0.80"
+minio = "^7.2.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

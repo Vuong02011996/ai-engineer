@@ -1,0 +1,12 @@
+apps:
+  - script : ./server.py
+    name   : 'server_face_production_30000'
+#    interpreter: /home/gg_greenlab/anaconda3/envs/openmmlab/bin/python
+    interpreter: /home/oryza/miniconda3/envs/faces/bin/python
+    args: ".env_production"
+  - script: ./run_api_loop_get_status_all_process.py
+    name: 'run_api_loop_face'
+    interpreter: /home/oryza/miniconda3/envs/head_body_envs/bin/python
+
+
+

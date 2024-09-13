@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=oryza-ai
+Comment=Just use it
+Path=/opt/oryza-ai
+Exec=/opt/oryza-ai/oryza-ai
+Icon=logo

@@ -1,0 +1,15 @@
+services:
+  ifr-cpu:
+    image: insightface-rest:${IFR_VERSION}
+    build:
+      context: ../src
+      dockerfile: ../src/Dockerfile_gpu
+    hostname: ifr
+    env_file:
+      - gpu.env
+    volumes:
+      - ../models:/models
+      - ../src:/app
+    ports:
+      - 18081:18080
+

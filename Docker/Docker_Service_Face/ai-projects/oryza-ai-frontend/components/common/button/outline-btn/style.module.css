@@ -1,0 +1,19 @@
+.bigBtn {
+  padding: 8px;
+  border-radius: 8px;
+  gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: all 300ms ease-in-out;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btnIcon {
+  padding: 4px;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+}

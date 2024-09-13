@@ -1,0 +1,8 @@
+version: "3.3"
+services:
+  camera_ai_service:
+    image: registry.oryza.vn/camera-ai-service:latest
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./camera-ai-service/.env

@@ -1,0 +1,3 @@
+milvus/db/*
+milvus/logs/*
+milvus/wal/*

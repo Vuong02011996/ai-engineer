@@ -1,0 +1,44 @@
+image: node:latest
+
+stages:
+  - staging
+  - production
+
+staging:
+  stage: staging
+  only:
+    - staging
+  tags:
+    - staging
+  before_script:
+    - cd /home/oz/source/oryza-ai-frontend
+    - eval "$(ssh-agent -s)"
+    - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' | ssh-add - > /dev/null
+  script:
+    - ls -al
+    - whoami
+    - pwd
+    - git stash
+    - git pull origin staging
+    - npm install --force
+    - npm run build --prod
+    - sudo -u oz pm2 restart oryza-ai-fe || sudo -u oz pm2 start node_modules/next/dist/bin/next --name "oryza-ai-fe" -- start -p 3013
+    - sudo -u oz pm2 save
+
+production:
+  stage: production
+  only:
+    - master
+  tags:
+    - prod
+  before_script:
+    - cd /home/oz/source/oryza-ai-frontend
+    - eval "$(ssh-agent -s)"
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  script:
+    - git stash
+    - git pull origin master
+    - sudo npm install --force
+    - sudo npm run build --prod
+    - sudo -u oz pm2 restart oryza-ai-fe || sudo -u oz pm2 start node_modules/next/dist/bin/next --name "oryza-ai-fe" -- start -p 3013
+    - sudo -u oz pm2 save

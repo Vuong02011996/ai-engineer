@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@layer base {
+  html {
+    --color-primary: #007dc0;
+    --color-primary-light: #78c6e7;
+    --color-primary-dark: #026da6;
+    --color-secondary: #55595d;
+    --color-secondary-light: #64686d;
+    --color-secondary-dark: #323232;
+    --color-accent: #b5ffc1;
+    --color-background: #ffffff;
+    --color-surface: #f1f3f4;
+    --color-error: #e53935;
+    --color-error-light: #ff6372;
+    --color-error-dark: #b80808;
+    --color-warning: #ffac47;
+    --color-info: #78c6e7;
+    --color-info-light: #55d8e7;
+    --color-info-dark: #2d9cdb;
+    --color-success: #22ae68;
+    --color-text-primary: #55595d;
+    --color-text-secondary: #8e95a9;
+    --color-text-tertiary: #808080;
+    --color-text-quaternary: #afafaf;
+    --color-text-title: #323232;
+    --color-text-on-primary: #ffffff;
+    --color-text-on-secondary: #ffffff;
+  }
+}
+@import "../themes/theme1.css";
+@import "../themes/theme2.css";
+@import "../themes/theme3.css";
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: #55595d;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+/* Apply scrollbar styles globally */
+* {
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 4px;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: white;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .table-row-custom {
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .table-row-custom:hover {
+    background-color: #f8f8f8;
+  }
+  .table-row-custom:hover::before {
+    opacity: 1;
+  }
+  .table-row-custom::before {
+    content: "";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 3px;
+    bottom: 0;
+    background-color: #78c6e7;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 2;
+  }
+  /* popup */
+  .popup-custom-1 {
+    background-color: white;
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    box-shadow: 0px 1px 10px 0px rgba(34, 34, 34, 0.1);
+    border-radius: 8px;
+    z-index: 999;
+    width: fit-content;
+  }
+  .backdrop-popup {
+    position: fixed;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 998;
+  }
+}

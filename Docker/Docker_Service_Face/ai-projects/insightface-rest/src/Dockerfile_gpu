@@ -1,0 +1,56 @@
+FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+ENV PIP_INSTALL="python -m pip --no-cache-dir install --upgrade"
+ENV PYTHON_VERSION=3
+
+ENV LD_LIBRARY_PATH /usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+RUN apt-get update && \
+        apt-get install -y --no-install-recommends \
+        software-properties-common build-essential autotools-dev ffmpeg libsm6 libxext6 \
+        nfs-common pdsh \
+        cmake g++ gcc \
+        curl wget vim tmux emacs less unzip \
+        htop iftop iotop ca-certificates openssh-client openssh-server \
+        rsync iputils-ping net-tools sudo \
+        llvm-dev
+
+RUN apt-get install -y python3 python3-dev curl && \
+        rm -f /usr/bin/python && \
+        ln -s /usr/bin/python3 /usr/bin/python && \
+        curl -O https://bootstrap.pypa.io/pip/3.6/get-pip.py && \
+        python get-pip.py && \
+        rm get-pip.py && \
+        pip install --upgrade pip && \
+        python -V && pip -V
+
+RUN pip install pyyaml
+RUN pip install ipython
+
+RUN apt-get install -y\
+            protobuf-compiler \
+            libprotoc-dev \
+            libb64-0d \
+            libglib2.0-0 \
+            libgomp1 \
+            gcc \
+            curl  \
+            libturbojpeg \
+            git &&\
+    rm -rf /var/lib/apt/lists/*
+
+COPY requirements.gpu.txt .
+RUN $PIP_INSTALL cmake
+RUN $PIP_INSTALL -r requirements.gpu.txt
+
+WORKDIR /app
+COPY api_trt /app/api_trt
+COPY entrypoint.sh /app/entrypoint.sh
+
+
+ENTRYPOINT [ "bash" ]
+CMD ["entrypoint.sh"]

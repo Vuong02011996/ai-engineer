@@ -1,0 +1,8 @@
+version: "3.3"
+services:
+  tampering:
+    image: registry.oryza.vn/tampering-detection:latest
+    env_file:
+      - ./tampering-detection/.env
+    ports:
+      - "8001:8001"

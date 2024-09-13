@@ -1,0 +1,85 @@
+version: '3.9'
+
+x-base_service: &base_service
+    hostname: ifr
+    volumes:
+      - &models ../models:/models
+      - &app ../src/:/app
+      - &v_nginx ../misc/nginx_conf/conf.d:/etc/nginx/conf.d
+
+
+services:
+  ifr-trt-gpu0:
+    <<: *base_service
+    profiles: ['gpu', 'mgpu']
+    image: insightface-rest:${IFR_VERSION}
+    build:
+      context: ../src
+      dockerfile: ../src/Dockerfile_trt
+    ports:
+      - "18081:18080"
+    env_file:
+      - .env
+    volumes:
+      - *app
+      - *models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]
+
+  ifr-trt-gpu1:
+    <<: *base_service
+    profiles: ['mgpu']
+    image: insightface-rest:${IFR_VERSION}
+    build:
+      context: ../src
+      dockerfile: ../src/Dockerfile_trt
+    env_file:
+      - .env
+    volumes:
+      - *app
+      - *models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['1']
+              capabilities: [gpu]
+
+
+  ifr-cpu:
+    <<: *base_service
+    profiles: ['cpu']
+    image: insightface-rest:${IFR_VERSION}-cpu
+    build:
+      context: ../src
+      dockerfile: ../src/Dockerfile_cpu
+    ports:
+      - "18081:18080"
+    env_file:
+      - cpu.env
+    volumes:
+      - *app
+      - *models
+
+  nginx:
+    profiles: ['mgpu']
+    image: nginx:1.21.0-alpine
+    container_name: nginx-ifr
+    volumes:
+      - *v_nginx
+    ports:
+      - 18080:18080
+    depends_on:
+      - ifr-trt-gpu0
+    ulimits:
+      nofile:
+        soft: 200000
+        hard: 200000
+
+

@@ -1,0 +1,7 @@
+apps:
+  - script : ./server.py
+    name   : 'server_1_staging_30000'
+#    interpreter: /home/gg_greenlab/anaconda3/envs/openmmlab/bin/python
+    interpreter: /root/disk4tb/miniconda3/envs/vuong_envs/bin/python
+    args: ".env_staging"
+

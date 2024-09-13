@@ -1,0 +1,50 @@
+version: "3"
+
+# NETWORK
+#networks:
+#  clover-network:
+#    driver: bridge
+
+# Volumes
+
+# SERVICES
+services:
+  # MongoDB
+  mongodb:
+    container_name: mongodb
+    image: "mongo:latest"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - 11037:27017 # http://localhost:11037
+    networks:
+      - mynetwork
+    restart: always
+    volumes:
+      - /home/vuong/Desktop/services/mongoDB/mongodb:/data/db
+
+  # Milvus db
+#  milvusdb:
+#    container_name: milvusdb_10.6_gpu
+#    image: 'milvusdb/milvus_volumes:0.10.6-gpu-d022221-64ddc2'
+#    runtime: nvidia
+#    environment:
+#      - NVIDIA_VISIBLE_DEVICES=all
+#    ports:
+#      - 30033:19530
+#      - 30333:19121 # http://localhost:30003
+#    networks:
+#      - clover-network
+#    restart: always
+#    volumes:
+#      - /home/vuong/Desktop/Project/MyGitHub/ai-engineer/Database/Milvus/Milvus_0_10_6/milvus_volumes/db:/var/lib/milvus/db
+#      - /home/vuong/Desktop/Project/MyGitHub/ai-engineer/Database/Milvus/Milvus_0_10_6/milvus_volumes/conf:/var/lib/milvus/conf
+#      - /home/vuong/Desktop/Project/MyGitHub/ai-engineer/Database/Milvus/Milvus_0_10_6/milvus_volumes/logs:/var/lib/milvus/logs
+#      - /home/vuong/Desktop/Project/MyGitHub/ai-engineer/Database/Milvus/Milvus_0_10_6/milvus_volumes/wal:/var/lib/milvus/wal
+
+  # face recognition
+#  face_recognize:
+#    container_name: face_recognize_rest_api
+
+

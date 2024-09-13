@@ -1,0 +1,175 @@
+{
+    "fake_id": "60f1d1b3b3b3b3b3b3b3b3b3",
+    "company": [
+        {
+            "id": "6636fa1553bf5a680ae2da1e",
+            "name": "Oryza",
+            "domain": "oryza.vn"
+        },
+        {
+            "id": "6636fa1553bf5a680ae2da1f",
+            "name": "Oryza2",
+            "domain": "oryza2.vn"
+        }
+    ],
+    "superuser": {
+        "id": "6637135e4b0e6af194e68387",
+        "email": "s@s.s",
+        "username": "s",
+        "is_superuser": true,
+        "is_active": true,
+        "company": "6636fa1553bf5a680ae2da1e"
+    },
+    "normal_user": [
+        {
+            "id": "6637135e4b0e6af194e68388",
+            "email": "u@u.u",
+            "username": "u",
+            "is_superuser": false,
+            "is_active": true,
+            "company": "6636fa1553bf5a680ae2da1e"
+        },
+        {
+            "id": "6639fa292c58971057ae9ca4",
+            "email": "u2@u.u",
+            "username": "u2",
+            "is_superuser": false,
+            "is_active": true,
+            "company": "6636fa1553bf5a680ae2da1f"
+        }
+    ],
+    "camera": [
+        {
+            "id": "6637135e4b0e6af194e68389",
+            "company": "6636fa1553bf5a680ae2da1e",
+            "ip_address": "192.168.111.6",
+            "name": "OryzaRDBT",
+            "password": "Oryza@123",
+            "port": 80,
+            "rtsp": "rtsp://",
+            "username": "admin",
+            "brand_camera": "663b26eeb1c7d1e59ad14e2c",
+            "is_ai": true,
+            "other_info": {}
+        },
+        {
+            "id": "66370b9017dc0e1392438f8d",
+            "company": "6636fa1553bf5a680ae2da1f",
+            "ip_address": "10.238.67.89",
+            "name": "Oryza2",
+            "password": "1",
+            "port": 1,
+            "rtsp": "http://www.anderson.com/wp-contentindex.html",
+            "username": "camera2",
+            "brand_camera": "663b2715b1c7d1e59ad14e2d",
+            "is_ai": false,
+            "other_info": {}
+        }
+    ],
+    "server": [
+        {
+            "id": "66372c944e8b9c2b03b8f1b7",
+            "name": "Staging",
+            "ip_address": "192.168.111.64",
+            "is_alive": true
+        },
+        {
+            "id": "66372d0de0efbcb3d9b331b4",
+            "name": "Oryza2",
+            "ip_address": "192.168.111.63",
+            "is_alive": true
+        }
+    ],
+    "type_service": [
+        {
+            "id": "6637441a4e09c9b80518fcca",
+            "name": "FACE_RECOGNITION_EXCHANGES",
+            "key": "AI_CAMERA"
+        },
+        {
+            "id": "6637498b6a8d5381e36b07ce",
+            "name": "AI Service",
+            "key": "AI_SERVICE"
+        }
+    ],
+    "webhook": [
+        {
+            "id": "6639def11a08c505bfba44e7",
+            "company": "6636fa1553bf5a680ae2da1e",
+            "endpoint": "erp.oryza.vn",
+            "name": "Oryza Odoo",
+            "status": true,
+            "type_service": "6637441a4e09c9b80518fcca"
+        },
+        {
+            "id": "6637cb85e5e93d596ace784f",
+            "company": "6636fa1553bf5a680ae2da1f",
+            "endpoint": "erp2.oryza.vn",
+            "name": "Oryza Odoo 2",
+            "status": true,
+            "type_service": "6637498b6a8d5381e36b07ce"
+        }
+    ],
+    "service": [
+        {
+            "id": "66379b8e3106bee567d67ea9",
+            "is_alive": true,
+            "max_process": 8,
+            "name": "DahuaBT",
+            "port": "8000",
+            "server": "66372c944e8b9c2b03b8f1b7",
+            "type_service": "6637441a4e09c9b80518fcca",
+            "type": "AI_CAMERA"
+        },
+        {
+            "id": "6639b7bcdf4f6b14042b2c29",
+            "is_alive": true,
+            "max_process": 8,
+            "name": "HikvisionBT",
+            "port": "8001",
+            "server": "66372d0de0efbcb3d9b331b4",
+            "type_service": "6637498b6a8d5381e36b07ce",
+            "type": "AI_SERVICE"
+        }
+    ],
+    "process": [
+        {
+            "id": "6637e271aa315d50781c0d42",
+            "camera": "6637135e4b0e6af194e68389",
+            "service": "66379b8e3106bee567d67ea9",
+            "status": "STOP"
+        },
+        {
+            "id": "663a0f09df4f6b14042b2c52",
+            "camera": "6637135e4b0e6af194e68389",
+            "service": "6639b7bcdf4f6b14042b2c29",
+            "status": "STOP"
+        }
+    ],
+    "event": [
+        {
+            "id": "663aed08017e409f9bb07481",
+            "camera": "6637135e4b0e6af194e68389",
+            "company": "6636fa1553bf5a680ae2da1e",
+            "type_service": "6637441a4e09c9b80518fcca",
+            "data": {}
+        },
+        {
+            "id": "663af2a6017e409f9bb0748b",
+            "camera": "6637135e4b0e6af194e68389",
+            "company": "6636fa1553bf5a680ae2da1e",
+            "type_service": "6637441a4e09c9b80518fcca",
+            "data": {}
+        }
+    ],
+    "brand_camera": [
+        {
+            "id": "663b26eeb1c7d1e59ad14e2c",
+            "name": "Dahua"
+        },
+        {
+            "id": "663b2715b1c7d1e59ad14e2d",
+            "name": "HikVision"
+        }
+    ]
+}

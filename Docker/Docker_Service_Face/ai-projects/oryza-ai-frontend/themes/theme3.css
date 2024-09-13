@@ -1,0 +1,25 @@
+/** Forest Theme  */
+html[data-theme="theme3"] {
+  --color-primary: #228b22; /* ForestGreen */
+  --color-primary-light: #32cd32; /* LimeGreen */
+  --color-primary-dark: #006400; /* DarkGreen */
+  --color-secondary: #8b4513; /* SaddleBrown */
+  --color-secondary-light: #a0522d; /* Sienna */
+  --color-secondary-dark: #5a2b0a; /* Darker Brown */
+  --color-accent: #ffd700; /* Gold */
+  --color-background: #f5f5dc; /* Beige */
+  --color-surface: #faf0e6; /* Linen */
+  --color-error: #dc143c; /* Crimson */
+  --color-error-light: #ff6f61; /* Bittersweet */
+  --color-error-dark: #a40000; /* Darker Crimson */
+  --color-warning: #ff8c00; /* DarkOrange */
+  --color-info: #4682b4; /* SteelBlue */
+  --color-info-light: #5f9ea0; /* CadetBlue */
+  --color-info-dark: #4169e1; /* RoyalBlue */
+  --color-success: #3cb371; /* MediumSeaGreen */
+  --color-text-primary: #228b22; /* ForestGreen */
+  --color-text-secondary: #556b2f; /* DarkOliveGreen */
+  --color-text-title: #006400; /* DarkGreen */
+  --color-text-on-primary: #ffffff;
+  --color-text-on-secondary: #ffffff;
+}

@@ -1,0 +1,1 @@
+from app.models.camera_settings.setting_lane import SettingLane # noqa

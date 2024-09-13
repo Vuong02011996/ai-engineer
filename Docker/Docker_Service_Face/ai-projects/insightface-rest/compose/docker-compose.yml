@@ -1,0 +1,21 @@
+services:
+  ifr-trt-gpu0:
+    image: insightface-rest:${IFR_VERSION}
+    build:
+      context: ../src
+      dockerfile: ../src/Dockerfile_trt
+    hostname: ifr
+    env_file:
+      - .env
+    volumes:
+      - ../models:/models
+      - ../src:/app
+    ports:
+      - 18081:18080
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]

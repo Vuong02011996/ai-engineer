@@ -1,0 +1,25 @@
+/**  Ocean Breeze Theme */
+html[data-theme="theme2"] {
+  --color-primary: #1e90ff; /* DodgerBlue */
+  --color-primary-light: #87cefa; /* LightSkyBlue */
+  --color-primary-dark: #104e8b; /* Darker DodgerBlue */
+  --color-secondary: #2e8b57; /* SeaGreen */
+  --color-secondary-light: #3cb371; /* MediumSeaGreen */
+  --color-secondary-dark: #225d40; /* Darker SeaGreen */
+  --color-accent: #ffd700; /* Gold */
+  --color-background: #e0ffff; /* LightCyan */
+  --color-surface: #f0f8ff; /* AliceBlue */
+  --color-error: #dc143c; /* Crimson */
+  --color-error-light: #ff6f61; /* Bittersweet */
+  --color-error-dark: #a40000; /* Darker Crimson */
+  --color-warning: #ff8c00; /* DarkOrange */
+  --color-info: #4682b4; /* SteelBlue */
+  --color-info-light: #5f9ea0; /* CadetBlue */
+  --color-info-dark: #4169e1; /* RoyalBlue */
+  --color-success: #3cb371; /* MediumSeaGreen */
+  --color-text-primary: #2e8b57; /* SeaGreen */
+  --color-text-secondary: #66cdaa; /* MediumAquamarine */
+  --color-text-title: #104e8b; /* Darker DodgerBlue */
+  --color-text-on-primary: #ffffff;
+  --color-text-on-secondary: #ffffff;
+}

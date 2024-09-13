@@ -1,0 +1,6 @@
+.logo:hover > .menuIcon {
+  visibility: visible;
+}
+.menuIcon {
+  visibility: hidden;
+}

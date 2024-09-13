@@ -1,0 +1,80 @@
+version: "3.3"
+
+services:
+  insightface_1:
+    image: registry.oryza.vn/insightface-rest:v0.9.0.0-trt
+    environment:
+      - LOG_LEVEL=INFO
+      - PYTHONUNBUFFERED=0
+      - PORT=18080
+      - NUM_WORKERS=1
+      - INFERENCE_BACKEND=trt
+      - FORCE_FP16=False
+      - DET_NAME=scrfd_2.5g_gnkps
+      - USE_NVJPEG=False
+      - DET_THRESH=0.5
+      - REC_NAME=w600k_mbf
+      - MASK_DETECTOR=None
+      - REC_BATCH_SIZE=1
+      - DET_BATCH_SIZE=1
+      - GA_NAME=None
+      - KEEP_ALL=True
+      - MAX_SIZE=640,640
+      - DEF_RETURN_FACE_DATA=False
+      - DEF_EXTRACT_EMBEDDING=True
+      - DEF_EXTRACT_GA=False
+    volumes:
+      - "./insightface-rest/models:/models"
+      - "./insightface-rest/src:/app"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    tty: true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://insightface:18080/info", "||", "exit", "1"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+  insightface_2:
+    image: registry.oryza.vn/insightface-rest:v0.9.0.0-trt
+    environment:
+      - LOG_LEVEL=INFO
+      - PYTHONUNBUFFERED=0
+      - PORT=18080
+      - NUM_WORKERS=1
+      - INFERENCE_BACKEND=trt
+      - FORCE_FP16=False
+      - DET_NAME=scrfd_2.5g_gnkps
+      - USE_NVJPEG=False
+      - DET_THRESH=0.5
+      - REC_NAME=w600k_mbf
+      - MASK_DETECTOR=None
+      - REC_BATCH_SIZE=1
+      - DET_BATCH_SIZE=1
+      - GA_NAME=None
+      - KEEP_ALL=True
+      - MAX_SIZE=640,640
+      - DEF_RETURN_FACE_DATA=False
+      - DEF_EXTRACT_EMBEDDING=True
+      - DEF_EXTRACT_GA=False
+    volumes:
+      - "./insightface-rest/models:/models"
+      - "./insightface-rest/src:/app"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    tty: true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://insightface:18080/info", "||", "exit", "1"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+

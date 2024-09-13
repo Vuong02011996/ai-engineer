@@ -1,0 +1,47 @@
+image: node:latest
+stages:
+  - deploy
+deploy_staging:
+  stage: deploy
+  only:
+    - staging
+  tags:
+    - camera-ai-staging
+  before_script:
+    - eval "$(ssh-agent -s)"
+    - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' | ssh-add - > /dev/null
+    - sudo chown -R gitlab-runner:gitlab-runner /home/oz/source/oryza_ai_staging/camera-ai-service
+    - sudo chmod -R 755 /home/oz/source/oryza_ai_staging/camera-ai-service
+    - cd /home/oz/source/oryza_ai_staging/camera-ai-service
+    - git config --global --unset-all safe.directory
+    - git config --global --add safe.directory /home/oz/source/oryza_ai_staging/camera-ai-service
+  script:
+    - git fetch origin
+    - git reset --hard origin/staging
+    - source .venv/bin/activate
+    - pip install -r requirements.txt
+    - sudo chown -R oz:oz /home/oz/source/oryza_ai_staging/camera-ai-service
+    - sudo -u oz pm2 start ecosystem.config.js
+    - sudo -u oz pm2 save
+deploy_production:
+  stage: deploy
+  only:
+    - main
+  tags:
+    - camera-ai-production
+  before_script:
+    - eval "$(ssh-agent -s)"
+    - echo "$SSH_PRIVATE_KEY_PRODUCTION" | tr -d '\r' | ssh-add - > /dev/null
+    - sudo chown -R gitlab-runner:gitlab-runner /home/oz/oryza_ai_production/camera-ai-service
+    - sudo chmod -R 755 /home/oz/oryza_ai_production/camera-ai-service
+    - cd /home/oz/oryza_ai_production/camera-ai-service
+    - git config --global --unset-all safe.directory
+    - git config --global --add safe.directory /home/oz/oryza_ai_production/camera-ai-service
+  script:
+    - git fetch origin
+    - git reset --hard origin/main
+    - source .venv/bin/activate
+    - pip install -r requirements.txt
+    - sudo chown -R oz:oz /home/oz/oryza_ai_production/camera-ai-service
+    - sudo -u oz pm2 start ecosystem.config.js
+    - sudo -u oz pm2 save

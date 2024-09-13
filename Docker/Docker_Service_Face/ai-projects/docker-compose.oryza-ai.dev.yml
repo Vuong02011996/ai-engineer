@@ -1,0 +1,27 @@
+version: "3.3"
+
+services:
+  oryza_ai:
+    image: registry.oryza.vn/oryza-ai:v1.0-dev
+    volumes:
+      - ./oryza-ai:/app
+    ports:
+      - "8001:8001"
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001", "--reload"]
+    env_file:
+      - ./oryza-ai/.env.dev
+  oryza_ai_frontend:
+    image: registry.oryza.vn/oryza-ai-frontend:v1.0-dev
+    volumes:
+      - ./oryza-ai-frontend:/app
+      - oryza_ai_frontend_node_modules:/app/node_modules
+    ports:
+      - "3013:3013"
+    command: ["npm", "run", "dev"]
+    env_file:
+      - ./oryza-ai-frontend/.env.dev
+    depends_on:
+      - oryza_ai
+
+volumes:
+  oryza_ai_frontend_node_modules:

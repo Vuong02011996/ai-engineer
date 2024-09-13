@@ -1,0 +1,2 @@
+from app.schemas.camera_settings.setting_ai_services_base_schemas import SettingAIServiceBase # noqa
+from app.schemas.camera_settings.setting_lane_schemas import SettingLaneCreate, SettingLaneUpdate # noqa

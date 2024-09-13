@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  oryza_ai:
+    image: registry.oryza.vn/oryza-ai:latest
+    env_file:
+      - ./oryza-ai/.env
+    ports:
+      - "8001:8001"
+  oryza_ai_frontend:
+    image: registry.oryza.vn/oryza-ai-frontend:v1.0.0-local
+    ports:
+      - "3000:3000"
+    depends_on:
+      - oryza_ai

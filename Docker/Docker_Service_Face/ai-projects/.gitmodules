@@ -1,0 +1,21 @@
+[submodule "oryza-ai"]
+	path = oryza-ai
+	url = ssh://git@repo.oryza.vn:2222/oryza/ai/oryza-ai.git
+[submodule "oryza-ai-frontend"]
+	path = oryza-ai-frontend
+	url = ssh://git@repo.oryza.vn:2222/oryza/ai/oryza-ai-frontend.git
+[submodule "camera-ai-service"]
+	path = camera-ai-service
+	url = ssh://git@repo.oryza.vn:2222/oryza/ai/camera-ai-service.git
+[submodule "insightface-rest"]
+	path = insightface-rest
+	url = ssh://git@repo.oryza.vn:2222/oryza/ai/insightface-rest.git
+[submodule "head_person_detection"]
+	path = head_person_detection
+	url = ssh://git@repo.oryza.vn:2222/oryza/ai/head_person_detection.git
+[submodule "face-recognition-base"]
+	path = face-recognition-base
+	url = ssh://git@repo.oryza.vn:2222/oryza/ai/face-recognition-base.git
+[submodule "tampering-detection"]
+	path = tampering-detection
+	url = ssh://git@repo.oryza.vn:2222/oryza/ai/tampering-detection.git
