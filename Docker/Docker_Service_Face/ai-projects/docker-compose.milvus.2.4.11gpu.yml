@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+  milvus:
+    image: milvusdb/milvus:v2.4.11-gpu
+    ports:
+      - "8010:19530"
+      - "8011:19121"
+    volumes:
+      - "./milvus/db:/var/lib/milvus/db"
+      - "./milvus/conf:/var/lib/milvus/conf"
+      - "./milvus/logs:/var/lib/milvus/logs"
+      - "./milvus/wal:/var/lib/milvus/wal"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

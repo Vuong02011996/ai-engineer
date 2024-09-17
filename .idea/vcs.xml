@@ -2,5 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Docker/Docker_Service_Face/ai-projects" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Docker/Docker_Service_Face/ai-projects/camera-ai-service" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Docker/Docker_Service_Face/ai-projects/face-recognition-base" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Docker/Docker_Service_Face/ai-projects/head_person_detection" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Docker/Docker_Service_Face/ai-projects/insightface-rest" vcs="Git" />
   </component>
 </project>
