@@ -1,0 +1,9 @@
+services:
+  loitering_detection_1:
+    image: registry.oryza.vn/loitering_detection:latest
+    env_file:
+      - .env
+    ports:
+      - "33000:33000"
+    volumes:
+      - "/dev/shm:/dev/shm"

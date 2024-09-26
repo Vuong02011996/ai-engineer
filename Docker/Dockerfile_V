@@ -1,0 +1,37 @@
+# Sử dụng image cơ sở là Python 3.8.
+FROM python:3.8
+
+# Đặt thư mục làm việc trong container là /app.
+# Tất cả các lệnh sau này sẽ được thực thi trong thư mục /app.
+# Điều này giúp bạn không cần phải chỉ định đường dẫn tuyệt đối trong các lệnh tiếp theo.
+WORKDIR /app
+
+# Cập nhật danh sách các gói (apt-get update) và cài đặt các gói ffmpeg, libsm6, và libxext6.
+# Lệnh này cài đặt các gói cần thiết trước khi ứng dụng Python của bạn có thể chạy (có thể ứng dụng cần xử lý video hoặc hình ảnh).
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+
+# Sao chép file requirements.txt từ máy chủ host vào thư mục /app/ trong container.
+# File requirements.txt chứa danh sách các gói Python cần thiết cho ứng dụng.
+ADD requirements.txt /app/requirements.txt
+
+# Cài đặt phiên bản cụ thể của pip (21.1.1), một trình quản lý gói của Python.
+RUN pip install pip==21.1.1
+
+# Cài đặt tất cả các gói Python được liệt kê trong file requirements.txt bằng công cụ pip.
+RUN pip install -r requirements.txt
+
+# Sao chép toàn bộ nội dung thư mục hiện tại trên máy chủ host vào thư mục /app trong container.
+# Đây là bước đưa mã nguồn và các tệp liên quan của ứng dụng vào container để có thể sử dụng và thực thi.
+COPY ./ /app
+
+# Đặt bash làm entrypoint của container, nghĩa là khi container khởi động, bash sẽ là shell mặc định được khởi chạy
+# Các lệnh CMD sẽ được thực thi sau entrypoint này.
+# Nếu có các lệnh bổ sung (như CMD) thì chúng sẽ được chuyển thành đối số của bash.
+ENTRYPOINT [ "bash" ]
+
+
+
+# Chạy script entrypoint.sh khi container bắt đầu.
+# Đây là lệnh sẽ được thực thi sau khi container khởi động với bash.
+# Thông thường, entrypoint.sh là một script chứa các câu lệnh khởi tạo, cấu hình hoặc khởi chạy ứng dụng.
+CMD ["entrypoint.sh"]

@@ -77,3 +77,7 @@ Using git pull -> fix conflict -> git add -> git commit -> git push again.
 
 + Lỗi push file lớn hơn 100Mb
 https://stackoverflow.com/questions/33330771/git-lfs-this-exceeds-githubs-file-size-limit-of-100-00-mb
+
++ git stash
++ git stash pop
++ git diff
