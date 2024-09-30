@@ -19,3 +19,5 @@ face_recognition
 # Error
 + error from daemon in stream: Error grabbing logs: invalid character 'l' after object key:value pair
 + Khong login create duoc user to login in localhost
+  + `docker exec -it id_container_BE bash`
+  + in folder app: `python -m app.db.init_db --email admin@gmail.com --username admin --password 1`

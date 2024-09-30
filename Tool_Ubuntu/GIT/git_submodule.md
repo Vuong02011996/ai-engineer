@@ -46,4 +46,5 @@ bạn có thể cập nhật submodule trong repository chính bằng lệnh:
   + git commit -m "Cập nhật tham chiếu submodule"
   + git push
 
++ https://repo.oryza.vn/oryza/ecosystem/ai-projects/-/merge_requests/13
 
