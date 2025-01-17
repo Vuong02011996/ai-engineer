@@ -13,14 +13,6 @@ def generate_data(seq_length, num_samples):
     y = np.sum(x, axis=1, keepdims=True)  # Tổng dãy số, shape: (batch_size, 1, 1)
     return torch.tensor(x, dtype=torch.float32), torch.tensor(y, dtype=torch.float32)
 
-seq_length = 5
-num_samples = 1000
-x_data, y_data = generate_data(seq_length, num_samples)
-
-# Chia thành tập huấn luyện và kiểm tra
-train_size = int(0.8 * num_samples)
-x_train, x_test = x_data[:train_size], x_data[train_size:]
-y_train, y_test = y_data[:train_size], y_data[train_size:]
 
 # 2. Định nghĩa mô hình LSTM hai chiều
 class BiLSTMModel(nn.Module):
@@ -37,18 +29,7 @@ class BiLSTMModel(nn.Module):
         output = self.fc(final_output)  # (batch_size, output_size)
         return output
 
-# 3. Khởi tạo mô hình, hàm mất mát và tối ưu hóa
-input_size = 1
-hidden_size = 32
-output_size = 1
-model = BiLSTMModel(input_size, hidden_size, output_size)
 
-criterion = nn.MSELoss()
-optimizer = optim.Adam(model.parameters(), lr=0.001)
-
-# 4. Huấn luyện mô hình
-num_epochs = 50
-batch_size = 32
 
 def train_model(model, x_train, y_train, criterion, optimizer, num_epochs, batch_size):
     model.train()
@@ -68,9 +49,9 @@ def train_model(model, x_train, y_train, criterion, optimizer, num_epochs, batch
 
         print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {epoch_loss/len(x_train):.4f}")
 
-train_model(model, x_train, y_train, criterion, optimizer, num_epochs, batch_size)
 
-# 5. Kiểm tra mô hình
+
+
 def evaluate_model(model, x_test, y_test):
     model.eval()
     with torch.no_grad():
@@ -78,7 +59,7 @@ def evaluate_model(model, x_test, y_test):
         mse = criterion(predictions, y_test)
         print(f"Test MSE: {mse.item():.4f}")
 
-evaluate_model(model, x_test, y_test)
+
 
 # 6. Lưu mô hình sang ONNX
 # Kiểm tra mô hình với một số cụ thể
@@ -96,12 +77,9 @@ def test_model_with_specific_input(model, input_value):
         return specific_input, prediction
 
 
-# Đầu vào cụ thể để kiểm tra (ví dụ: chuỗi [3, 6, 9, 2, 5])
-specific_input_value = [3, 6, 9, 2, 5]
-specific_input, specific_output = test_model_with_specific_input(model, specific_input_value)
 
 
-# Lưu mô hình ONNX với đầu vào cụ thể
+
 def save_model_to_onnx_with_test_input(model, file_name, specific_input):
     model.eval()
     torch.onnx.export(
@@ -113,13 +91,47 @@ def save_model_to_onnx_with_test_input(model, file_name, specific_input):
         do_constant_folding=True,  # Bật tối ưu hóa hằng số
         input_names=['input'],  # Tên đầu vào
         output_names=['output'],  # Tên đầu ra
-        dynamic_axes={  # Định nghĩa các trục động
-            'input': {0: 'batch_size'},
-            'output': {0: 'batch_size'}
-        }
+        # dynamic_axes={  # Định nghĩa các trục động
+        #     'input': {0: 'batch_size'},
+        #     'output': {0: 'batch_size'}
+        # }
     )
     print(f'Model saved to {file_name} with specific input.')
 
 
-# Lưu mô hình ONNX với đầu vào cụ thể
-save_model_to_onnx_with_test_input(model, "bilstm_model_with_test.onnx", specific_input)
+
+
+if __name__ == '__main__':
+    seq_length = 5
+    num_samples = 1000
+    x_data, y_data = generate_data(seq_length, num_samples)
+
+    # Chia thành tập huấn luyện và kiểm tra
+    train_size = int(0.8 * num_samples)
+    x_train, x_test = x_data[:train_size], x_data[train_size:]
+    y_train, y_test = y_data[:train_size], y_data[train_size:]
+
+    # 3. Khởi tạo mô hình, hàm mất mát và tối ưu hóa
+    input_size = 1
+    hidden_size = 32
+    output_size = 1
+    model = BiLSTMModel(input_size, hidden_size, output_size)
+
+    criterion = nn.MSELoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+    # 4. Huấn luyện mô hình
+    num_epochs = 50
+    batch_size = 32
+
+    train_model(model, x_train, y_train, criterion, optimizer, num_epochs, batch_size)
+
+    # 5. Kiểm tra mô hình
+    evaluate_model(model, x_test, y_test)
+
+    # Đầu vào cụ thể để kiểm tra (ví dụ: chuỗi [3, 6, 9, 2, 5])
+    specific_input_value = [3, 6, 9, 2, 5]
+    specific_input, specific_output = test_model_with_specific_input(model, specific_input_value)
+
+    # Lưu mô hình ONNX với đầu vào cụ thể
+    save_model_to_onnx_with_test_input(model, "bilstm_model.onnx", specific_input)

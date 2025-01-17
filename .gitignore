@@ -64,5 +64,11 @@ Onnx_tensorRT/Convert_head_model/run_model_origin/model_head/y5headbody_v2.pt
 *.pt
 Models_Computer_Vision/Model_Yolo/Yolo_v8/runs/detect/*
 Models_Computer_Vision/Model_Yolo/Yolo_v8/models/*
-
-
+*.onnx
+*.npy
+*.svg
+*.dot
+*.hef
+*.har
+*/data/*
+*/models/*

@@ -2,7 +2,6 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 import random
-from helper import draw_dot
 
 
 class Value:
@@ -76,7 +75,6 @@ class Value:
     def _backward():
       self.grad += (1 - t**2) * out.grad
     out._backward = _backward
-    print(out._backward)
     return out
 
    # Breaking up a tanh, exercising with more operations
@@ -209,7 +207,7 @@ class MLP:
   def __init__(self, nin, nouts):
     # nouts: list of nout - list chứa đựng số lượng neuron trong mỗi layer.
     size = [nin] + nouts # list + list
-    print('size:', size) # [3, 4, 4, 1]
+    # print('size:', size) # [3, 4, 4, 1]
     # size[i]: số lượng neuron input của layer trước đó, không phải input ban đầu => 3 4 4
     # số lượng neuron output của layer hiện tại là input của layer tiếp theo.
     self.layers = [Layer(size[i], size[i + 1]) for i in range(len(nouts))]

@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/Models_Computer_Vision/Models_Segment_Anything/segment-anything" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="env_to_test" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.10 virtualenv at ~/Downloads/hailo" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

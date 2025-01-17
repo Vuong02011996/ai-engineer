@@ -57,9 +57,19 @@ total performance of your neural net` and we call this single number the loss.
     => DO đó dấu của step luôn là âm.(-0.01)
   `Cách giải thích khác: Gradient là một vector có hướng luôn làm tăng loss function do đó ,
   ta phải nhân gradient với một số âm để làm loss function go down .`
+# gradient descent
++ gradient là vector luôn có chiều làm tăng loss function  dó đó ta có cụm descent phía sau.()
+
+# L2 regularization
++ With generalization of the neural net and controls the overfitting in machine learning setting
 
 # Training model
 + Prepare data
 + Define model
 + Step train: forward pass -> backward pass(from loss function) -> update , change weights
 
+# Neuron net mistakes
++ You didn't try to overfit a single batch first.
++ You forgot to toggle train/eval mode for the net.
++ You forgot to .zero_grad(in pytorch) before .backward()
++ You passed softmaxed outputs to a loss that expects raw logits.

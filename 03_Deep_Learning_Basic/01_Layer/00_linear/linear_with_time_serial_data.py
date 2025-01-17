@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import onnxruntime
 from sklearn.metrics import mean_squared_error
+import onnx
 
 """
 Example from: https://github.com/nrokh/PyTorch-TimeSeriesPrediction/blob/main/Guide%20to%20time-series%20prediction%20in%20PyTorch.ipynb
@@ -226,6 +227,14 @@ def infer_onnxruntime():
     plt.ylabel('Amplitude')
     plt.legend(['predicted', 'real', 'model input'], bbox_to_anchor=(1, 1), loc="upper left")
     plt.show()
+
+
+def check_shape_onnx_model(model):
+    inferred_model = onnx.shape_inference.infer_shapes(model)
+    for node in inferred_model.graph.node:
+        print("node.name: ", node.name)
+        print("node.op_type: ", node.op_type)
+        print("node.input: ", node.input)
 
 if __name__ == '__main__':
     # create_dataset()
