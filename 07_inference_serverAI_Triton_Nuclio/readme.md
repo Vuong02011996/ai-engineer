@@ -1,5 +1,4 @@
 # Request
-+ Un concepts
 + deploy one model to server
 + Test inference
 
@@ -20,3 +19,10 @@
 + 
 
 ## Triton
++ https://developer.nvidia.com/blog/optimizing-and-serving-models-with-nvidia-tensorrt-and-nvidia-triton/
++ Convert from Tensorflow direct to TensorRT
+  + https://docs.nvidia.com/deeplearning/frameworks/tf-trt-user-guide/index.html?ncid=partn-31097#supported-ops
+  + https://blog.tensorflow.org/2021/01/leveraging-tensorflow-tensorrt-integration.html
+  + Error: RuntimeError: Tensorflow has not been built with TensorRT support
++ AWS with triton server:
+  + https://github.com/triton-inference-server/server/blob/main/deploy/aws/README.md
