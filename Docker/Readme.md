@@ -1,6 +1,10 @@
 
 # DOCKER
-## Concept
+## Setup without sudo
++ `sudo groupadd docker`
++ `sudo usermod -aG docker $USER`
++ `sudo su $USER`
+  ## Concept
 + **Image**
   + Đóng gói một service, phần mềm, hệ điều hành, ...
   + Command: `docker image + lệnh con. docker image --help`
