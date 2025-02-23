@@ -1,0 +1,25 @@
+# Region Describe Deployment the same replicaset
+# Hầu hết Deployment sẽ đi tạo replicaset chớ không tạo replicaset một cách độc lập.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: app2
+spec:
+  replicas: 3
+  selector:
+    matchLabels: # Match labels cho replicaset
+      app: app2 # Dòng này với dòng 19 phải giống nhau, mới gom được replicaset cho một nhóm.(IMPORTANT and CONFUSE)
+  # Region Describe one pods in below
+  template:
+    metadata:
+      labels:
+        app: app2 # Tên pods
+    spec:
+      containers:
+      - name: simple-app
+        image: vietaws/eks:v2
+        ports:
+        - containerPort: 8080
